@@ -13,9 +13,9 @@ const serif = Instrument_Serif({
 const mono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono", display: "swap" });
 
 export const metadata: Metadata = {
-  title: "Bespoke · See your new website before you pay",
+  title: "Bespoke · Conversion focused landing pages tailored to your business and audience.",
   description:
-    "A small web studio in Ljubljana. Send us your current site and we build the new one first. Love it and it’s yours from €150. If not, you pay nothing.",
+    "We are a bespoke web studio here to help you rebuild and revamp your websites with a focus on conversion, high quality copy, tailored to your business and target audience. Send us your current site and we redesign and rebuild the new one. If you love it, it’s yours. If not, you pay nothing.",
 };
 
 export const viewport: Viewport = {

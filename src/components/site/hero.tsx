@@ -40,19 +40,18 @@ export function Hero() {
 
       <div className="mx-auto grid w-full max-w-[96rem] flex-1 content-center gap-10 px-5 sm:px-8 md:grid-cols-12 md:items-center md:gap-8 lg:px-12">
         <div className="md:col-span-7">
-          <p className="rise-in font-mono text-[11px] tracking-[0.18em] text-mist uppercase">Web studio · Ljubljana</p>
           <h1
             id="hero-title"
             className="rise-in mt-4 max-w-[11ch] text-[clamp(3rem,11vw,9.5rem)] leading-[0.9] font-light tracking-[-0.055em] [animation-delay:120ms]"
           >
-            See your new website{" "}
-            <em className="font-serif font-normal tracking-[-0.02em]">first.</em>
+            Bespoke studio for{" "}
+            <em className="font-serif font-normal tracking-[-0.02em]">websites.</em>
           </h1>
           <a
             href="#start"
             className="rise-in group mt-8 inline-flex h-12 items-center gap-3 rounded-full bg-foam pr-2 pl-5 text-sm font-medium text-ink transition-transform [animation-delay:380ms] active:scale-[0.98] sm:mt-10"
           >
-            Show me my new site
+            Revamp your website
             <span className="grid size-8 place-items-center rounded-full bg-ink text-foam transition-transform duration-300 group-hover:translate-x-0.5">
               <svg aria-hidden="true" className="size-3.5" fill="none" stroke="currentColor" strokeWidth={1.6} viewBox="0 0 16 16">
                 <path d="M3 8h10M9 4l4 4-4 4" strokeLinecap="round" strokeLinejoin="round" />
@@ -63,15 +62,15 @@ export function Hero() {
 
         {/* Slanted subheading over its own reflection. */}
         <div className="rise-in [animation-delay:260ms] md:col-span-5 md:justify-self-end">
-          <div className="-rotate-[6deg] md:-rotate-[8deg] md:[transform-origin:left_bottom]">
+          <div className="">
             <p className="max-w-[20ch] font-serif text-[clamp(1.6rem,3.2vw,2.8rem)] leading-[1.02] text-foam italic">
-              Built before you pay. Paid only if you love it.
+              Conversion focused websites tailored to your business and audience.
             </p>
             <p
               aria-hidden="true"
               className="mt-1 max-w-[20ch] -scale-y-100 font-serif text-[clamp(1.6rem,3.2vw,2.8rem)] leading-[1.02] text-foam/45 italic select-none [mask-image:linear-gradient(to_top,black,transparent_75%)] blur-[0.5px]"
             >
-              Built before you pay. Paid only if you love it.
+              Conversion focused websites tailored to your business and audience.
             </p>
           </div>
         </div>
