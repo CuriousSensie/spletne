@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { THEMES } from "@/components/props/mini-sites";
+import { home } from "@/content/home";
 import { clamp01, easeInOutCubic, range } from "@/components/work/scroll";
 
 /**
@@ -12,6 +13,7 @@ import { clamp01, easeInOutCubic, range } from "@/components/work/scroll";
  */
 
 const t = THEMES.dental;
+const C = home.whatYouGet;
 const BLUE = "#7fb4e0";
 
 type Mode = "words" | "design" | "structure";
@@ -148,11 +150,11 @@ interface Layer {
 
 /** Bottom → top. */
 const LAYERS: readonly Layer[] = [
-  { name: "Domain & hosting", line: "In your name. You hold the keys.", solid: true },
-  { name: "Code", line: "Written by hand, quick to load, and handed over in full.", solid: true },
-  { name: "Structure", line: "Built the way Google reads, so locals find you.", solid: false },
-  { name: "Design", line: "Drawn for your business. No templates.", solid: true },
-  { name: "Words", line: "Written with you, in the words your customers actually use.", solid: false },
+  { ...C.layers.domain, solid: true },
+  { ...C.layers.code, solid: true },
+  { ...C.layers.structure, solid: false },
+  { ...C.layers.design, solid: true },
+  { ...C.layers.words, solid: false },
 ];
 const N = LAYERS.length;
 
@@ -244,13 +246,14 @@ export function Exploded() {
       <div className="sticky top-0 flex h-svh flex-col overflow-hidden">
         <div className="mx-auto flex w-full max-w-[96rem] items-end justify-between gap-6 px-5 pt-8 sm:px-8 sm:pt-12 lg:px-12">
           <div className="grid gap-4">
-            <p className="font-mono text-[11px] tracking-[0.18em] text-mist uppercase">(05) What you get</p>
+            <p className="font-mono text-[11px] tracking-[0.18em] text-mist uppercase">{C.label}</p>
             <h2 id="get-title" className="text-[clamp(1.85rem,4.6vw,3.6rem)] leading-[1.02] font-light tracking-[-0.045em]">
-              Every layer is <em className="font-serif font-normal tracking-[-0.01em]">yours.</em>
+              {C.title.before}
+              <em className="font-serif font-normal tracking-[-0.01em]">{C.title.em}</em>
             </h2>
           </div>
           <p className="hidden pb-1 font-mono text-[11px] tracking-[0.16em] text-foam/50 uppercase tabular-nums sm:block" aria-hidden="true">
-            {active >= 0 ? `Layer ${String(N - active).padStart(2, "0")} / ${String(N).padStart(2, "0")}` : closed ? "Assembled" : "The finished site"}
+            {active >= 0 ? `${C.states.layerWord} ${String(N - active).padStart(2, "0")} / ${String(N).padStart(2, "0")}` : closed ? C.states.assembled : C.states.finished}
           </p>
         </div>
 
@@ -329,7 +332,7 @@ export function Exploded() {
             <p
               className={`mt-8 hidden font-serif text-[clamp(1.4rem,2.2vw,2rem)] leading-tight italic transition-opacity duration-700 md:block ${closed ? "opacity-100" : "opacity-0"}`}
             >
-              All of it, in your name.
+              {C.states.closing}
             </p>
 
             {/* Mobile: just the active layer. */}
@@ -338,9 +341,9 @@ export function Exploded() {
                 <span className="font-mono text-[11px] tracking-[0.14em] text-mist tabular-nums">
                   {shown ? `${String(N - active).padStart(2, "0")} / ${String(N).padStart(2, "0")}` : ""}
                 </span>
-                <span className="text-xl font-light tracking-[-0.03em]">{shown ? shown.name : closed ? "All of it, in your name." : "The finished site"}</span>
+                <span className="text-xl font-light tracking-[-0.03em]">{shown ? shown.name : closed ? C.states.closing : C.states.finished}</span>
               </p>
-              <p className="text-[15px] leading-snug text-foam/60">{shown ? shown.line : closed ? "" : "Scroll to take it apart."}</p>
+              <p className="text-[15px] leading-snug text-foam/60">{shown ? shown.line : closed ? "" : C.states.hint}</p>
             </div>
           </div>
         </div>

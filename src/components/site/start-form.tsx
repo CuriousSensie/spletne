@@ -2,6 +2,9 @@
 
 import { useActionState } from "react";
 import { requestPreview, type PreviewState } from "@/app/actions/request-preview";
+import { home } from "@/content/home";
+
+const f = home.start.form;
 
 const INITIAL: PreviewState = { status: "idle" };
 
@@ -39,9 +42,11 @@ export function StartForm() {
   if (state.status === "ok") {
     return (
       <div role="status" className="grid gap-3 rounded-[1.75rem] bg-foam/[0.06] p-6 ring-1 ring-foam/12 sm:p-8">
-        <p className="font-mono text-[11px] tracking-[0.16em] text-[#7fe0b0] uppercase">Request received</p>
+        <p className="font-mono text-[11px] tracking-[0.16em] text-[#7fe0b0] uppercase">{f.okEyebrow}</p>
         <p className="text-2xl leading-tight font-light tracking-[-0.03em]">
-          Got it. We&apos;ll reply to <span className="font-serif italic">{state.email}</span> within one working day.
+          {f.ok.before}
+          <span className="font-serif italic">{state.email}</span>
+          {f.ok.after}
         </p>
       </div>
     );
@@ -53,22 +58,22 @@ export function StartForm() {
   return (
     <form action={action} noValidate className="grid gap-3">
       <div className="grid gap-3 sm:grid-cols-2">
-        <Field name="site" label="Your current website" type="text" inputMode="url" autoComplete="url" placeholder="yourbusiness.si" defaultValue={values.site} invalid={errField === "site"} />
-        <Field name="email" label="Your email" type="email" inputMode="email" autoComplete="email" placeholder="you@yourbusiness.si" defaultValue={values.email} invalid={errField === "email"} />
+        <Field name="site" label={f.site.label} type="text" autoComplete="url" placeholder={f.site.placeholder} defaultValue={values.site} invalid={errField === "site"} />
+        <Field name="email" label={f.email.label} type="email" inputMode="email" autoComplete="email" placeholder={f.email.placeholder} defaultValue={values.email} invalid={errField === "email"} />
       </div>
       {/* Honeypot, hidden from people and assistive tech. */}
       <input type="text" name="company" tabIndex={-1} autoComplete="off" aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 opacity-0" />
 
       <div className="mt-2 flex flex-col-reverse gap-4 sm:flex-row sm:items-center sm:justify-between">
         <p aria-live="polite" className={`text-[14px] ${state.status === "error" ? "text-[#ff8a7a]" : "font-mono text-[11px] tracking-[0.14em] text-foam/45 uppercase"}`}>
-          {state.status === "error" ? state.message : "Due today · €0.00"}
+          {state.status === "error" ? state.message : f.due}
         </p>
         <button
           type="submit"
           disabled={pending}
           className="group inline-flex h-14 items-center justify-between gap-3 rounded-full bg-foam pr-2 pl-6 text-[15px] font-medium text-ink transition-[transform,opacity] active:scale-[0.98] disabled:opacity-70"
         >
-          {pending ? "Sending…" : "Show me my new site"}
+          {pending ? f.sending : f.submit}
           <span className="grid size-10 place-items-center rounded-full bg-ink text-foam transition-transform duration-300 group-hover:translate-x-0.5">
             <svg aria-hidden="true" className={`size-4 ${pending ? "animate-pulse" : ""}`} fill="none" stroke="currentColor" strokeWidth={1.6} viewBox="0 0 16 16">
               <path d="M3 8h10M9 4l4 4-4 4" strokeLinecap="round" strokeLinejoin="round" />

@@ -1,52 +1,16 @@
 "use client";
 
 import { useId, useState } from "react";
+import { home } from "@/content/home";
 import { Exploded } from "./exploded";
 
 /* ------------------------------------------------------------------ */
 /* FAQ                                                                 */
 /* ------------------------------------------------------------------ */
 
-interface Faq {
-  q: string;
-  a: string;
-}
-
-/** PLACEHOLDER: confirm turnaround times and hosting costs before launch. */
-const FAQS: readonly Faq[] = [
-  {
-    q: "What do I get for free?",
-    a: "A working version of your new site, built from your current one. Open it on your phone, click around, show it to your team. No card, no deposit.",
-  },
-  {
-    q: "What if I don’t love it?",
-    a: "Then you pay nothing and that’s the end of it. No invoice, no follow-up calls. If we missed the mark, tell us why and we’ll have another go.",
-  },
-  {
-    q: "Why build it for free?",
-    a: "Because showing beats explaining. Most owners can’t picture a new site until they’re holding it. Once they are, most of them say yes.",
-  },
-  {
-    q: "What do you need from me?",
-    a: "The link to your current website. We take your text, photos and services from there. If you have a logo or newer photos, send them along.",
-  },
-  {
-    q: "How long does it take?",
-    a: "Your preview is ready in 3 to 5 working days. Say yes and the site is live within a week.",
-  },
-  {
-    q: "What does it cost after launch?",
-    a: "Just your domain and hosting, usually a few euros a month, paid straight to the provider in your name. Nothing goes to us.",
-  },
-  {
-    q: "Do I own it?",
-    a: "Yes. The domain, the hosting and the code are all in your name. If you ever leave, everything goes with you.",
-  },
-  {
-    q: "Can I change things later?",
-    a: "Yes. Small edits are quick and cheap. You can also edit it yourself or hire someone else. We won’t mind.",
-  },
-];
+type Faq = (typeof home.faq.items)[number];
+const t = home.faq;
+const FAQS = t.items;
 
 function FaqItem({ item, open, onToggle, index }: { item: Faq; open: boolean; onToggle: () => void; index: number }) {
   const id = useId();
@@ -103,14 +67,15 @@ export function Details() {
       <div className="mx-auto max-w-[96rem] px-5 pb-20 sm:px-8 sm:pb-28 lg:px-12 lg:pb-36">
         <div id="faq" className="grid scroll-mt-8 gap-10 border-t border-foam/12 pt-12 sm:pt-16 lg:grid-cols-12 lg:gap-x-12">
           <div className="grid content-start gap-5 lg:col-span-4 lg:sticky lg:top-12 lg:self-start">
-            <p className="font-mono text-[11px] tracking-[0.18em] text-mist uppercase">Questions</p>
+            <p className="font-mono text-[11px] tracking-[0.18em] text-mist uppercase">{t.label}</p>
             <h3 className="text-[clamp(1.7rem,4vw,3rem)] leading-[1.02] font-light tracking-[-0.045em]">
-              Asked and <em className="font-serif font-normal tracking-[-0.01em]">answered.</em>
+              {t.title.before}
+              <em className="font-serif font-normal tracking-[-0.01em]">{t.title.em}</em>
             </h3>
             <p className="max-w-[32ch] text-[15px] leading-snug text-foam/60">
-              Still unsure?{" "}
+              {t.more.before}{" "}
               <a href="#start" className="text-foam underline decoration-foam/30 underline-offset-4 transition-colors hover:decoration-foam">
-                Just ask.
+                {t.more.link}
               </a>
             </p>
           </div>
