@@ -4,22 +4,17 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { ShaderCanvas } from "@/components/shaders/shader-canvas";
 import { ASSEMBLE, CONTOURS, LIFTOFF, PACKETS, TAPS } from "@/components/shaders/library";
 import { PALETTES, type Palette } from "@/components/shaders/palettes";
+import { home } from "@/content/home";
 
-interface Step {
-  n: string;
-  title: string;
-  body: string;
-  meta: string;
-  frag: string;
-  palette: Palette;
-}
-
-const STEPS: readonly Step[] = [
-  { n: "01", title: "Send us your link", body: "Your current website, or just your business name. That’s all we need to start.", meta: "Takes 2 minutes", frag: PACKETS, palette: PALETTES.ocean },
-  { n: "02", title: "We build your new site", body: "A real designer redesigns it and rewrites the words. Nothing comes from a template.", meta: "Ready in 3–5 days", frag: ASSEMBLE, palette: PALETTES.ocean },
-  { n: "03", title: "Try it on your phone", body: "We send you a private link. Tap around like a customer would, and show your team.", meta: "No rush", frag: TAPS, palette: PALETTES.ocean },
-  { n: "04", title: "Launch, or walk away", body: "Love it? We take it live. If not, you owe us nothing and we part as friends.", meta: "€0 until you say yes", frag: LIFTOFF, palette: PALETTES.launch },
+/** Copy lives in content/home.ts; each step adds its background graphic. */
+const VISUALS: readonly { frag: string; palette: Palette }[] = [
+  { frag: PACKETS, palette: PALETTES.ocean },
+  { frag: ASSEMBLE, palette: PALETTES.ocean },
+  { frag: LIFTOFF, palette: PALETTES.launch },
+  { frag: TAPS, palette: PALETTES.ocean },
 ];
+const t = home.howItWorks;
+const STEPS = t.steps.map((s, i) => ({ ...s, n: String(i + 1).padStart(2, "0"), ...VISUALS[i] }));
 
 const COUNT = STEPS.length;
 const clamp01 = (n: number): number => Math.min(1, Math.max(0, n));
@@ -70,17 +65,19 @@ export function HowItWorks() {
         <div className="mx-auto flex h-full w-full max-w-[96rem] flex-col justify-center gap-6 px-5 py-8 sm:gap-10 sm:px-8 lg:px-12">
           <header className="flex flex-wrap items-end justify-between gap-x-8 gap-y-3">
             <div className="grid gap-3">
-              <p className="font-mono text-[11px] tracking-[0.18em] text-ink/55 uppercase">(02) How it works</p>
+              <p className="font-mono text-[11px] tracking-[0.18em] text-ink/55 uppercase">{t.label}</p>
               <h2 id="process-title" className="max-w-[18ch] text-[clamp(1.7rem,5vw,3.5rem)] leading-[1.02] font-light tracking-[-0.045em] text-balance">
-                Four steps. You only pay at the <em className="font-serif font-normal tracking-[-0.01em]">last</em> one.
+                {t.title.before}
+                <em className="font-serif font-normal tracking-[-0.01em]">{t.title.em}</em>
+                {t.title.after}
               </h2>
             </div>
             <p className="font-mono text-[11px] tracking-[0.16em] text-ink/55 uppercase tabular-nums" aria-live="polite">
-              Step {active + 1} / {COUNT}
+              {t.stepWord} {active + 1} / {COUNT}
             </p>
           </header>
 
-          <ol ref={rowRef} className="flex h-[min(60svh,34rem)] flex-col gap-2 md:h-[min(56svh,32rem)] md:flex-row md:gap-3">
+          <ol ref={rowRef} className="flex h-[min(68svh,40rem)] flex-col gap-2 md:h-[min(58svh,34rem)] md:flex-row md:gap-3">
             {STEPS.map((s, i) => {
               const on = i === active;
               const reached = i <= active;
@@ -111,12 +108,11 @@ export function HowItWorks() {
                     }`}
                   >
                     {/* Both layers stay mounted and cross-fade; inactive canvases pause on their last frame. */}
-                    <span aria-hidden="true" className={`absolute inset-0 transition-opacity duration-500 ease-[var(--ease-smooth-out)] ${on ? "opacity-0" : "opacity-100"}`}>
+                    <span aria-hidden="true" className={`absolute inset-0 transition-opacity duration-500 ease-[var(--ease-smooth-out)] ${on ? "opacity-0" : "opacity-[0.18]"}`}>
                       <ShaderCanvas frag={CONTOURS} palette={PALETTES.lines} speed={0.25} scale={1} anchor={rowRef} syncTime active={!on} />
                     </span>
-                    <span aria-hidden="true" className={`absolute inset-0 transition-opacity duration-500 ease-[var(--ease-smooth-out)] ${on ? "opacity-100" : "opacity-0"}`}>
+                    <span aria-hidden="true" className={`absolute inset-0 transition-opacity duration-500 ease-[var(--ease-smooth-out)] ${on ? "opacity-[0.14]" : "opacity-0"}`}>
                       <ShaderCanvas frag={s.frag} palette={s.palette} speed={1} scale={1} active={on} />
-                      <span className="absolute inset-0 bg-linear-to-t from-ink via-ink/55 to-ink/10" />
                     </span>
                     <span className="relative flex h-full flex-col justify-between gap-3 p-4 sm:p-5 lg:p-6">
                       <span className={`hidden items-center justify-between font-mono text-[11px] tracking-[0.16em] uppercase md:flex ${on ? "text-mist" : "text-ink/50"}`}>
@@ -126,7 +122,7 @@ export function HowItWorks() {
                       <span className="mt-auto grid gap-2">
                         <span
                           className={`font-light tracking-[-0.035em] text-balance transition-[font-size] duration-500 ${
-                            on ? "text-[clamp(1.5rem,3.2vw,2.6rem)] leading-[1.02]" : "text-[17px] leading-tight md:text-xl"
+                            on ? "text-[clamp(1.35rem,2.6vw,2.2rem)] leading-[1.02]" : "text-[17px] leading-tight md:text-xl"
                           }`}
                         >
                           <span className={`mr-2 font-mono text-[11px] tracking-[0.16em] md:hidden ${on ? "text-mist" : "text-ink/50"}`}>{s.n}</span>
@@ -134,7 +130,7 @@ export function HowItWorks() {
                         </span>
                         <span className={`grid transition-[grid-template-rows,opacity] duration-500 ease-[var(--ease-smooth-out)] ${on ? "grid-rows-[1fr] opacity-100 delay-150" : "grid-rows-[0fr] opacity-0"}`}>
                           <span className="overflow-hidden">
-                            <span className="block max-w-[36ch] pt-1 text-[15px] leading-snug text-foam/80 sm:text-base">{s.body}</span>
+                            <span className="block max-w-[56ch] pt-1 text-[13.5px] leading-snug text-foam/85 sm:text-[15px] lg:text-base lg:leading-relaxed">{s.body}</span>
                           </span>
                         </span>
                       </span>
