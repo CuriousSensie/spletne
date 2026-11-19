@@ -1,18 +1,21 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { BrowserFrame, MobileSite, NewSite, OldSite } from "@/components/props/mini-sites";
+import { BrowserFrame } from "@/components/props/mini-sites";
+import { home } from "@/content/home";
+import { NewRestaurant, NewRestaurantMobile, OldRestaurant, OldRestaurantOnPhone } from "./compare-sites";
 
 /** Callouts on the redesigned site; each shows once the slider reveals its x position. */
-const PINS = [
-  { x: 86, y: 14, label: "Book in one tap" },
-  { x: 74, y: 70, label: "Today’s free slots" },
-  { x: 28, y: 88, label: "Prices up front" },
+const PIN_SPOTS = [
+  { x: 20, y: 61 },
+  { x: 28, y: 76 },
+  { x: 79, y: 71 },
 ] as const;
+const PINS = PIN_SPOTS.map((p, i) => ({ ...p, label: home.whatWeDo.pins[i] }));
 
 /** The redesign sweeps in from the left: 20% → 80% revealed. */
 const START = 20;
-const END = 80;
+const END = 84;
 const SWEEP_MS = 3200;
 /** Wait until most of the slider is on screen and scrolling has settled. */
 const START_DELAY_MS = 450;
@@ -128,21 +131,9 @@ function Stage({
 
 function Phone({ children }: { children: React.ReactNode }) {
   return (
-    <div className="relative mx-auto aspect-[9/19] w-[min(74vw,300px)] rounded-[2.6rem] bg-[#0b0f14] p-2 shadow-[0_40px_80px_-24px_rgb(0_0_0/0.7),inset_0_0_0_1px_rgb(255_255_255/0.12)]">
+    <div className="relative mx-auto aspect-[9/19] w-[min(64vw,270px)] rounded-[2.6rem] bg-[#0b0f14] p-2 shadow-[0_40px_80px_-24px_rgb(0_0_0/0.7),inset_0_0_0_1px_rgb(255_255_255/0.12)]">
       <div className="relative size-full overflow-hidden rounded-[2.1rem] bg-white">{children}</div>
       <span className="pointer-events-none absolute top-4 left-1/2 h-5 w-20 -translate-x-1/2 rounded-full bg-black" />
-    </div>
-  );
-}
-
-/** The dated desktop site as a phone renders it: zoomed out, unreadable, not responsive. */
-function OldOnPhone() {
-  return (
-    <div className="flex size-full flex-col bg-white pt-10">
-      <div className="aspect-[16/11] w-full">
-        <OldSite />
-      </div>
-      <div className="flex-1 bg-[repeating-linear-gradient(45deg,#d4d0c8_0_2px,#c9c5bd_2px_4px)]" />
     </div>
   );
 }
@@ -192,16 +183,16 @@ export function CompareSlider() {
   // Stable elements: the sweep updates `pos` every frame, and these must not re-render with it.
   const frames = useMemo(
     () => ({
-      phoneBefore: <OldOnPhone />,
-      phoneAfter: <MobileSite theme="dental" />,
-      before: <OldSite />,
-      after: <NewSite theme="dental" />,
+      phoneBefore: <OldRestaurantOnPhone />,
+      phoneAfter: <NewRestaurantMobile />,
+      before: <OldRestaurant />,
+      after: <NewRestaurant />,
     }),
     [],
   );
 
   return (
-    <div ref={wrap} className="mx-auto w-full max-w-[min(72rem,calc((100svh-6rem)*1.6))]">
+    <div ref={wrap} className="mx-auto w-full max-w-[min(76rem,calc((100svh-15rem)*1.6))]">
       <div
         role="slider"
         tabIndex={0}
@@ -228,7 +219,7 @@ export function CompareSlider() {
         </div>
         {/* Tablet and up: browser frame with callouts. */}
         <div className="hidden md:block">
-          <BrowserFrame url="northlinedental.si" className="aspect-[16/10] w-full">
+          <BrowserFrame url="osterialipa.si" className="aspect-[16/10] w-full">
             <Stage pos={pos} setPos={setPos} onInteract={stopHint} before={frames.before} after={frames.after} pins />
           </BrowserFrame>
         </div>
