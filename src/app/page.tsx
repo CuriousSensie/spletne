@@ -3,9 +3,9 @@ import { FinalCta } from "@/components/site/final-cta";
 import { SmoothScroll } from "@/components/site/smooth-scroll";
 import { Hero } from "@/components/site/hero";
 import { HowItWorks } from "@/components/site/how-it-works";
+import { PreviewAccess } from "@/components/site/preview-access";
 import { Pricing } from "@/components/site/pricing";
 import { WhatWeDo } from "@/components/site/what-we-do";
-import { Work } from "@/components/site/work";
 
 export default function HomePage() {
   return (
@@ -13,7 +13,7 @@ export default function HomePage() {
       <Hero />
       <WhatWeDo />
       <HowItWorks />
-      <Work />
+      <PreviewAccess />
       <Pricing />
       <Details />
       <FinalCta />
