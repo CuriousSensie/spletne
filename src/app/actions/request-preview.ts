@@ -1,5 +1,8 @@
 "use server";
 
+import { home } from "@/content/home";
+import { mailConfig, missingMailEnv, sendMail } from "@/lib/mailer";
+
 export type PreviewFields = { site: string; email: string };
 
 export type PreviewState =
@@ -9,49 +12,38 @@ export type PreviewState =
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
-/** Accepts "yourbusiness.si", "www.x.com" or a full URL; returns a normalised https URL or null. */
-function normaliseSite(raw: string): string | null {
+const MSG = home.start.form.errors;
+
+/** Accepts "yourbusiness.si", "www.x.com" or a full URL; returns a normalised https URL, or null if it isn't one. */
+function asUrl(raw: string): string | null {
+  if (/\s/.test(raw)) return null;
   const withScheme = /^https?:\/\//i.test(raw) ? raw : `https://${raw}`;
   try {
     const url = new URL(withScheme);
     return url.hostname.includes(".") ? url.toString() : null;
   } catch {
-    // An unparseable URL is a validation failure, reported to the user by the caller.
+    // Not a URL: the caller treats the input as a business name instead.
     return null;
   }
 }
 
-/**
- * Sends the lead through Resend's HTTP API when configured
- * (RESEND_API_KEY, LEAD_FROM on a verified domain, LEAD_INBOX).
- * Without config: logs in development, fails loudly in production.
- */
-async function deliverLead(site: string, email: string): Promise<void> {
-  const key = process.env.RESEND_API_KEY;
-  const from = process.env.LEAD_FROM;
-  const to = process.env.LEAD_INBOX;
-
-  if (!key || !from || !to) {
+/** Emails the lead to LEAD_INBOX over SMTP. Without mail config: logs in development, fails loudly in production. */
+async function deliverLead(siteOrName: string, isUrl: boolean, email: string): Promise<void> {
+  const missing = missingMailEnv();
+  if (missing.length) {
     if (process.env.NODE_ENV !== "production") {
-      console.info("[request-preview] email delivery not configured; lead:", { site, email });
+      console.info("[request-preview] mail not configured (missing %s); lead:", missing.join(", "), { siteOrName, email });
       return;
     }
-    throw new Error("Lead delivery is not configured (RESEND_API_KEY, LEAD_FROM, LEAD_INBOX).");
+    throw new Error(`Lead delivery is not configured; missing ${missing.join(", ")}`);
   }
-
-  const res = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
-    body: JSON.stringify({
-      from,
-      to,
-      reply_to: email,
-      subject: `Preview request: ${new URL(site).hostname}`,
-      text: `Website: ${site}\nEmail: ${email}`,
-    }),
-    signal: AbortSignal.timeout(10_000),
+  const label = isUrl ? new URL(siteOrName).hostname : siteOrName;
+  await sendMail({
+    to: mailConfig().inbox,
+    replyTo: email,
+    subject: `Preview request: ${label}`,
+    text: [`${isUrl ? "Website" : "Business"}: ${siteOrName}`, `Email: ${email}`, "", "Reply to this email to answer the client directly."].join("\n"),
   });
-  if (!res.ok) throw new Error(`Resend responded ${res.status}: ${await res.text()}`);
 }
 
 export async function requestPreview(_prev: PreviewState, formData: FormData): Promise<PreviewState> {
@@ -62,15 +54,17 @@ export async function requestPreview(_prev: PreviewState, formData: FormData): P
   // Honeypot: real visitors never see or fill this field. Pretend success so bots move on.
   if (String(formData.get("company") ?? "") !== "") return { status: "ok", email };
 
-  const site = normaliseSite(rawSite);
-  if (!site) return { status: "error", field: "site", message: "That doesn’t look like a web address. Try something like yourbusiness.si", values };
-  if (!EMAIL_RE.test(email) || email.length > 254) return { status: "error", field: "email", message: "That email looks off. Mind checking it?", values };
+  // A website, or just a business name when they don't have one.
+  const url = asUrl(rawSite);
+  const name = rawSite.replace(/[\r\n]+/g, " ");
+  if (!url && (name.length < 2 || name.length > 120)) return { status: "error", field: "site", message: MSG.site, values };
+  if (!EMAIL_RE.test(email) || email.length > 254) return { status: "error", field: "email", message: MSG.email, values };
 
   try {
-    await deliverLead(site, email);
+    await deliverLead(url ?? name, !!url, email);
   } catch (err) {
     console.error("[request-preview] delivery failed", err);
-    return { status: "error", message: "Something broke on our end. Please try again in a minute.", values };
+    return { status: "error", message: MSG.server, values };
   }
   return { status: "ok", email };
 }
