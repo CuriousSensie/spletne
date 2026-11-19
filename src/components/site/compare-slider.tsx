@@ -11,7 +11,6 @@ const PIN_SPOTS = [
   { x: 28, y: 76 },
   { x: 79, y: 71 },
 ] as const;
-const PINS = PIN_SPOTS.map((p, i) => ({ ...p, label: home.whatWeDo.pins[i] }));
 
 /** The redesign sweeps in from the left: 20% → 80% revealed. */
 const START = 20;
@@ -86,24 +85,6 @@ function Stage({
       <div className="absolute inset-0" style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }}>
         {after}
       </div>
-
-      {pins &&
-        PINS.map((p) => (
-          <span
-            key={p.label}
-            aria-hidden="true"
-            className="pointer-events-none absolute flex -translate-x-1/2 -translate-y-1/2 items-center gap-1.5 rounded-full bg-ink/85 py-1 pr-2.5 pl-1.5 font-mono text-[10px] tracking-wide whitespace-nowrap text-foam uppercase shadow-lg backdrop-blur transition-all duration-500 ease-[var(--ease-smooth-out)]"
-            style={{
-              left: `${p.x}%`,
-              top: `${p.y}%`,
-              opacity: p.x < pos - 4 ? 1 : 0,
-              scale: p.x < pos - 4 ? "1" : "0.85",
-            }}
-          >
-            <span className="size-1.5 rounded-full bg-[#3ddc97]" />
-            {p.label}
-          </span>
-        ))}
 
       <span
         className="pointer-events-none absolute top-3 left-3 rounded-full bg-black/55 px-2.5 py-1 font-mono text-[10px] tracking-[0.14em] text-white uppercase backdrop-blur transition-opacity"

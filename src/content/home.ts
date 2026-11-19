@@ -29,7 +29,6 @@ export const home = {
     title: { lang: "sl", text: "Zdaj je pravi čas za posodobitev" },
     /** PLACEHOLDER: subheadline to come from the collaborator. */
     sub: "Here’s a ten-year-old website next to the one we’d build today. Drag to compare.",
-    pins: ["Book a table in one tap", "Menu with prices", "Opening hours up front"],
   },
 
   howItWorks: {
