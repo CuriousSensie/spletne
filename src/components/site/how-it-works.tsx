@@ -60,7 +60,7 @@ export function HowItWorks() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="process" aria-labelledby="process-title" className="relative h-[420svh] bg-foam text-ink">
+    <section ref={sectionRef} id="process" aria-labelledby="process-title" className="relative h-[210svh] bg-foam text-ink">
       <div ref={stickyRef} className="sticky top-0 isolate flex h-svh flex-col overflow-hidden [--p:0]">
         <div className="mx-auto flex h-full w-full max-w-[96rem] flex-col justify-center gap-6 px-5 py-8 sm:gap-10 sm:px-8 lg:px-12">
           <header className="flex flex-wrap items-end justify-between gap-x-8 gap-y-3">

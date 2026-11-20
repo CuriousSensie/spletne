@@ -241,7 +241,7 @@ export function Exploded() {
   const shown = active >= 0 ? LAYERS[active] : null;
 
   return (
-    <div ref={pin} className="relative h-[560svh]">
+    <div ref={pin} className="relative h-[255svh]">
 
       <div className="sticky top-0 flex h-svh flex-col overflow-hidden">
         <div className="mx-auto flex w-full max-w-[96rem] items-end justify-between gap-6 px-5 pt-8 sm:px-8 sm:pt-12 lg:px-12">
