@@ -18,7 +18,7 @@ export function Hero() {
 
       <header className="mx-auto flex w-full max-w-[96rem] items-center justify-between px-5 pt-5 sm:px-8 sm:pt-7 lg:px-12">
         <Wordmark />
-        <nav aria-label="Main" className="hidden items-center gap-8 font-mono text-[11px] tracking-[0.14em] text-foam/70 uppercase md:flex">
+        <nav aria-label="Glavni meni" className="hidden items-center gap-8 font-mono text-[11px] tracking-[0.14em] text-foam/70 uppercase md:flex">
           {home.nav.links.map((n) => (
             <a key={n.href} href={n.href} className="transition-colors hover:text-foam">
               {n.label}
@@ -73,7 +73,7 @@ export function Hero() {
       </div>
 
       <div className="mx-auto flex w-full max-w-[96rem] items-center justify-between px-5 pb-6 font-mono text-[11px] tracking-[0.14em] text-foam/55 uppercase sm:px-8 sm:pb-8 lg:px-12">
-        <a href="#what-we-do" className="flex items-center gap-3 hover:text-foam" aria-label="Scroll to what we do">
+        <a href="#what-we-do" className="flex items-center gap-3 hover:text-foam" aria-label="Pomaknite se navzdol">
           <span className="relative block h-9 w-px overflow-hidden bg-foam/15">
             <span className="scroll-cue absolute inset-0 bg-foam" />
           </span>

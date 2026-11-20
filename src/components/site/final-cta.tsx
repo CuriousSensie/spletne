@@ -37,7 +37,7 @@ export function FinalCta() {
             <Wordmark />
             <span className="font-mono text-[11px] tracking-[0.14em] text-foam/45 uppercase">{home.footer.city}</span>
           </div>
-          <nav aria-label="Footer" className="flex flex-wrap gap-x-6 gap-y-2 font-mono text-[11px] tracking-[0.14em] text-foam/55 uppercase">
+          <nav aria-label="Noga strani" className="flex flex-wrap gap-x-6 gap-y-2 font-mono text-[11px] tracking-[0.14em] text-foam/55 uppercase">
             {home.footer.links.map((l) => (
               <a key={l.href} href={l.href} className="transition-colors hover:text-foam">
                 {l.label}
