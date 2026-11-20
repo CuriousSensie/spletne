@@ -30,6 +30,7 @@ export const home = {
     /** PLACEHOLDER: subheadline to come from the collaborator. */
     sub: "Stranke vas ocenijo v nekaj sekundah. Kaj vidijo pri vas?",
   },
+  
 
   howItWorks: {
     label: "Kako poteka",
