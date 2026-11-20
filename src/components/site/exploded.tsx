@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type CSSProperties } from "react";
-import { THEMES } from "@/components/props/mini-sites";
+import Image from "next/image";
 import { home } from "@/content/home";
 import { clamp01, easeInOutCubic, range } from "@/components/work/scroll";
 
@@ -12,17 +12,17 @@ import { clamp01, easeInOutCubic, range } from "@/components/work/scroll";
  * then puts it back together flat.
  */
 
-/** The demo practice, in Slovenian. Colours come from the shared dental theme. */
+/** The demo practice: a believable modern dental clinic site, in Slovenian. */
 const t = {
-  ...THEMES.dental,
-  name: "Zobna ambulanta Bor",
-  headline: "Nežna oskrba, termin v nekaj sekundah.",
-  sub: "Družinsko zobozdravstvo v središču Ljubljane.",
-  cta: "Naročite se",
-  slot: "Prosti termin · Danes 14:30",
-  services: ["Pregledi", "Beljenje", "Nujna pomoč"],
-  price: "Od 40 €",
+  fg: "#16201c",
+  muted: "rgb(22 32 28 / 0.6)",
+  bg: "#f5f2ec",
+  line: "rgb(22 32 28 / 0.14)",
+  accent: "#1f3d33",
+  accentFg: "#f5f2ec",
+  sand: "#e8e0d2",
 } as const;
+
 const C = home.whatYouGet;
 const BLUE = "#7fb4e0";
 
@@ -37,7 +37,7 @@ function Region({ mode, tag, className = "", style, children }: { mode: Mode; ta
         ? { ...style, color: "transparent" }
         : { ...style, background: "rgb(127 180 224 / 0.1)", color: "transparent", border: `1.5px dashed ${BLUE}`, boxShadow: "none" };
   return (
-    <span className={`relative ${className}`} style={base}>
+    <span className={`${/\babsolute\b/.test(className) ? "" : "relative "}${className}`} style={base}>
       {children}
       {mode === "structure" && tag && (
         <span className="absolute -top-[1.1cqw] left-[1cqw] bg-[#0a1e33] px-[0.6cqw] font-mono text-[1.3cqw] leading-none tracking-[0.1em] uppercase" style={{ color: BLUE }}>
@@ -48,61 +48,131 @@ function Region({ mode, tag, className = "", style, children }: { mode: Mode; ta
   );
 }
 
-/** The demo practice's homepage, rendered as one layer of itself. Mirrors NewSite's layout. */
+const SERVICES = [
+  ["Preventivni pregled", "45 €"],
+  ["Ustna higiena", "60 €"],
+  ["Beljenje zob", "290 €"],
+  ["Nujna pomoč", "isti dan"],
+] as const;
+const DAYS = ["Tor 25", "Sre 26", "Čet 27"] as const;
+const TIMES = ["08:30", "11:00", "14:30"] as const;
+
+/** The demo practice's homepage, rendered as one layer of itself. Every mode renders the same boxes. */
 function SiteLayer({ mode }: { mode: Mode }) {
   const pageBg = mode === "design" ? t.bg : mode === "structure" ? "rgb(10 30 51 / 0.72)" : "transparent";
   const fg = mode === "words" ? "var(--w-fg)" : "transparent";
   const muted = mode === "words" ? "var(--w-muted)" : "transparent";
+  const onAccent = mode === "words" ? t.accentFg : "transparent";
+  const rule = mode === "design" ? t.line : "transparent";
   return (
     <div className="@container size-full overflow-hidden" style={{ background: pageBg, color: fg }}>
-      <div className="flex h-full flex-col gap-[3cqw] p-[4cqw]">
-        <Region mode={mode} tag="nav" className="flex items-center justify-between">
-          <span className="text-[3.2cqw] font-semibold tracking-tight">{t.name}</span>
-          <span className="flex items-center gap-[3cqw] text-[2.2cqw]" style={{ color: muted }}>
+      <div className="flex h-full flex-col px-[4.5cqw] pt-[2.6cqw]">
+        {/* Nav */}
+        <Region mode={mode} tag="nav" className="flex items-center justify-between text-[1.4cqw]">
+          <span className="flex items-baseline gap-[1cqw]">
+            <span className="font-serif text-[3.2cqw] leading-none">Bor</span>
+            <span className="text-[1.15cqw] tracking-[0.14em] uppercase" style={{ color: muted }}>
+              zobna ambulanta
+            </span>
+          </span>
+          <span className="flex items-center gap-[2.6cqw]">
             <span>Storitve</span>
+            <span>Cenik</span>
             <span>Ekipa</span>
-            <Region mode={mode} tag="a" className="rounded-full px-[2.4cqw] py-[1cqw] font-medium" style={{ background: t.accent, color: mode === "words" ? t.accentFg : "transparent" }}>
-              {t.cta}
+            <span>Kontakt</span>
+          </span>
+          <span className="flex items-center gap-[2cqw]">
+            <span className="tabular-nums" style={{ color: muted }}>
+              01 430 22 10
+            </span>
+            <Region mode={mode} tag="a" className="rounded-full px-[2cqw] py-[0.9cqw] font-medium" style={{ background: t.accent, color: onAccent }}>
+              Naročite se
             </Region>
           </span>
         </Region>
-        <div className="grid min-h-0 flex-1 grid-cols-[1.25fr_1fr] items-center gap-[3cqw]">
-          <div className="grid gap-[1.8cqw]">
-            <Region mode={mode} tag="h1" className="block text-[5cqw] leading-[1.02] font-medium tracking-[-0.04em]">
-              {t.headline}
+
+        {/* Hero */}
+        <div className="grid min-h-0 flex-1 grid-cols-[1fr_1.08fr] items-center gap-[4cqw] py-[3cqw]">
+          <div className="grid content-center gap-[2cqw]">
+            <Region mode={mode} tag="p" className="block text-[1.2cqw] tracking-[0.16em] uppercase" style={{ color: muted }}>
+              Bežigrad, Ljubljana
             </Region>
-            <Region mode={mode} tag="p" className="block text-[2.4cqw]" style={{ color: muted }}>
-              {t.sub}
+            <Region mode={mode} tag="h1" className="block font-serif text-[6.4cqw] leading-[0.95] tracking-[-0.02em]">
+              Prvi pregled
+              <br />
+              <em>še ta teden.</em>
             </Region>
-            <div className="mt-[1cqw] flex gap-[1.6cqw] text-[2.2cqw] font-medium">
-              <Region mode={mode} tag="a" className="rounded-full px-[3cqw] py-[1.4cqw]" style={{ background: t.accent, color: mode === "words" ? t.accentFg : "transparent" }}>
-                {t.cta}
+            <Region mode={mode} tag="p" className="block max-w-[34ch] text-[1.6cqw] leading-[1.45]" style={{ color: muted }}>
+              Brez dolgih čakalnih vrst. Pregled, ustna higiena in nujna pomoč za vso družino, z vedno istim zobozdravnikom.
+            </Region>
+            <div className="flex items-center gap-[1.4cqw] text-[1.5cqw] font-medium">
+              <Region mode={mode} tag="a" className="rounded-full px-[2.6cqw] py-[1.3cqw]" style={{ background: t.accent, color: onAccent }}>
+                Izberite termin
               </Region>
-              <Region mode={mode} className="rounded-full border px-[3cqw] py-[1.4cqw]" style={{ borderColor: t.muted }}>
-                Pokličite nas
+              <Region mode={mode} tag="a" className="rounded-full border px-[2.6cqw] py-[1.2cqw]" style={{ borderColor: t.line }}>
+                Cenik storitev
               </Region>
             </div>
+            <Region mode={mode} tag="p" className="flex items-center gap-[1cqw] text-[1.3cqw]">
+              <span style={{ color: mode === "words" ? "#c08a2e" : "transparent" }}>★★★★★</span>
+              <span style={{ color: muted }}>4,9 · 286 ocen na Googlu</span>
+            </Region>
           </div>
-          <Region mode={mode} tag="img · alt" className="block h-full overflow-hidden rounded-[2cqw]" style={{ background: mode === "design" ? t.hero : undefined }}>
+
+          <Region mode={mode} tag="img · alt" className="block h-full overflow-visible rounded-[1.6cqw]" style={{ background: mode === "design" ? t.sand : undefined }}>
+            {mode === "design" && (
+              <span className="absolute inset-0 overflow-hidden rounded-[1.6cqw]">
+                <Image src="/demo/dentist.webp" alt="" fill sizes="(min-width: 768px) 30vw, 50vw" className="object-cover object-[60%_40%]" />
+              </span>
+            )}
+            {/* Booking card */}
             <Region
               mode={mode}
-              className="absolute bottom-[2.4cqw] left-[2.4cqw] rounded-[1.4cqw] px-[2.2cqw] py-[1.4cqw] text-[2cqw] font-medium"
-              style={{ background: "rgb(255 255 255 / 0.82)", color: mode === "words" ? "#07172a" : "transparent" }}
+              tag="form"
+              className="absolute bottom-[2cqw] -left-[3cqw] grid w-[56%] gap-[1cqw] rounded-[1.4cqw] p-[1.8cqw] text-[1.25cqw] shadow-[0_1.5cqw_3cqw_-1cqw_rgb(22_32_28/0.35)]"
+              style={{ background: "#fffdf9" }}
             >
-              {t.slot}
+              <span className="flex items-baseline justify-between">
+                <span className="text-[1.5cqw] font-medium">Prosti termini</span>
+                <span style={{ color: muted }}>Pregled · 30 min</span>
+              </span>
+              <span className="grid grid-cols-3 gap-[0.7cqw]">
+                {DAYS.map((d, i) => (
+                  <span
+                    key={d}
+                    className="rounded-[0.8cqw] border py-[0.6cqw] text-center"
+                    style={i === 0 ? { background: t.accent, borderColor: t.accent, color: onAccent } : { borderColor: rule }}
+                  >
+                    {d}
+                  </span>
+                ))}
+              </span>
+              <span className="grid grid-cols-3 gap-[0.7cqw] tabular-nums">
+                {TIMES.map((h, i) => (
+                  <span
+                    key={h}
+                    className="rounded-full py-[0.5cqw] text-center"
+                    style={{ background: mode === "design" ? (i === 1 ? t.sand : "rgb(22 32 28 / 0.05)") : undefined }}
+                  >
+                    {h}
+                  </span>
+                ))}
+              </span>
             </Region>
           </Region>
         </div>
-        <div className="grid grid-cols-3 gap-[2cqw]">
-          {t.services.map((s) => (
-            <Region key={s} mode={mode} tag="h2" className="block rounded-[1.6cqw] p-[2cqw]" style={{ background: "rgb(127 127 127 / 0.1)" }}>
-              <span className="block text-[2.2cqw] font-medium">{s}</span>
-              <span className="mt-[0.6cqw] block text-[1.8cqw]" style={{ color: muted }}>
-                {t.price}
+
+        {/* Services and prices */}
+        <Region mode={mode} tag="section" className="grid grid-cols-4 border-t pt-[1.6cqw] pb-[2.4cqw]" style={{ borderColor: rule }}>
+          {SERVICES.map(([name, price], i) => (
+            <span key={name} className={`grid gap-[0.3cqw] ${i ? "border-l pl-[2cqw]" : ""}`} style={{ borderColor: rule }}>
+              <span className="text-[1.45cqw] font-medium">{name}</span>
+              <span className="text-[1.3cqw] tabular-nums" style={{ color: muted }}>
+                {price}
               </span>
-            </Region>
+            </span>
           ))}
-        </div>
+        </Region>
       </div>
     </div>
   );
@@ -111,10 +181,10 @@ function SiteLayer({ mode }: { mode: Mode }) {
 function CodeLayer() {
   const lines: readonly (readonly [string, string])[] = [
     ["#7fe0b0", '<nav aria-label="Glavni meni">'],
-    ["#eef3f6", '  <a href="/narocanje">Naročite se</a>'],
+    ["#eef3f6", '  <a href="/termini">Izberite termin</a>'],
     ["#7fe0b0", "<main>"],
-    ["#f2d7b2", "  <h1>Nežna oskrba, termin v nekaj sekundah.</h1>"],
-    ["#b8c9d8", '  <img alt="Naša ambulanta v Ljubljani" …>'],
+    ["#f2d7b2", "  <h1>Prvi pregled še ta teden.</h1>"],
+    ["#b8c9d8", '  <img alt="Zobozdravnik v pogovoru s pacientko" …>'],
     ["#7fe0b0", "</main>"],
     ["#f2d7b2", '<script type="application/ld+json">'],
     ["#b8c9d8", '  { "@type": "Dentist", "areaServed": "Ljubljana" }'],
