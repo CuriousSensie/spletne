@@ -12,7 +12,17 @@ import { clamp01, easeInOutCubic, range } from "@/components/work/scroll";
  * then puts it back together flat.
  */
 
-const t = THEMES.dental;
+/** The demo practice, in Slovenian. Colours come from the shared dental theme. */
+const t = {
+  ...THEMES.dental,
+  name: "Zobna ambulanta Bor",
+  headline: "Nežna oskrba, termin v nekaj sekundah.",
+  sub: "Družinsko zobozdravstvo v središču Ljubljane.",
+  cta: "Naročite se",
+  slot: "Prosti termin · Danes 14:30",
+  services: ["Pregledi", "Beljenje", "Nujna pomoč"],
+  price: "Od 40 €",
+} as const;
 const C = home.whatYouGet;
 const BLUE = "#7fb4e0";
 
@@ -38,7 +48,7 @@ function Region({ mode, tag, className = "", style, children }: { mode: Mode; ta
   );
 }
 
-/** The Northline Dental homepage, rendered as one layer of itself. Mirrors NewSite's layout. */
+/** The demo practice's homepage, rendered as one layer of itself. Mirrors NewSite's layout. */
 function SiteLayer({ mode }: { mode: Mode }) {
   const pageBg = mode === "design" ? t.bg : mode === "structure" ? "rgb(10 30 51 / 0.72)" : "transparent";
   const fg = mode === "words" ? "var(--w-fg)" : "transparent";
@@ -49,8 +59,8 @@ function SiteLayer({ mode }: { mode: Mode }) {
         <Region mode={mode} tag="nav" className="flex items-center justify-between">
           <span className="text-[3.2cqw] font-semibold tracking-tight">{t.name}</span>
           <span className="flex items-center gap-[3cqw] text-[2.2cqw]" style={{ color: muted }}>
-            <span>Services</span>
-            <span>Team</span>
+            <span>Storitve</span>
+            <span>Ekipa</span>
             <Region mode={mode} tag="a" className="rounded-full px-[2.4cqw] py-[1cqw] font-medium" style={{ background: t.accent, color: mode === "words" ? t.accentFg : "transparent" }}>
               {t.cta}
             </Region>
@@ -69,7 +79,7 @@ function SiteLayer({ mode }: { mode: Mode }) {
                 {t.cta}
               </Region>
               <Region mode={mode} className="rounded-full border px-[3cqw] py-[1.4cqw]" style={{ borderColor: t.muted }}>
-                Call us
+                Pokličite nas
               </Region>
             </div>
           </div>
@@ -100,11 +110,11 @@ function SiteLayer({ mode }: { mode: Mode }) {
 
 function CodeLayer() {
   const lines: readonly (readonly [string, string])[] = [
-    ["#7fe0b0", '<nav aria-label="Main">'],
-    ["#eef3f6", '  <a href="/book">Book a visit</a>'],
+    ["#7fe0b0", '<nav aria-label="Glavni meni">'],
+    ["#eef3f6", '  <a href="/narocanje">Naročite se</a>'],
     ["#7fe0b0", "<main>"],
-    ["#f2d7b2", "  <h1>Gentle care, booked in seconds.</h1>"],
-    ["#b8c9d8", '  <img alt="Our Ljubljana practice" …>'],
+    ["#f2d7b2", "  <h1>Nežna oskrba, termin v nekaj sekundah.</h1>"],
+    ["#b8c9d8", '  <img alt="Naša ambulanta v Ljubljani" …>'],
     ["#7fe0b0", "</main>"],
     ["#f2d7b2", '<script type="application/ld+json">'],
     ["#b8c9d8", '  { "@type": "Dentist", "areaServed": "Ljubljana" }'],
@@ -124,17 +134,17 @@ function CodeLayer() {
 function PlateLayer() {
   return (
     <div className="@container flex size-full flex-col justify-between bg-[linear-gradient(145deg,#0f2f4a,#0a1e33_60%)] p-[5cqw] font-mono text-foam">
-      <span className="text-[1.8cqw] tracking-[0.18em] text-mist uppercase">Registrant · Northline Dental d.o.o.</span>
-      <span className="text-[6.5cqw] leading-none tracking-[-0.03em]">northlinedental.si</span>
+      <span className="text-[1.8cqw] tracking-[0.18em] text-mist uppercase">Imetnik · Zobna ambulanta Bor d.o.o.</span>
+      <span className="text-[6.5cqw] leading-none tracking-[-0.03em]">zobnabor.si</span>
       <span className="flex flex-wrap gap-x-[4cqw] gap-y-[1cqw] text-[1.7cqw] tracking-[0.16em] text-foam/60 uppercase">
         <span>
           <span className="text-[#7fe0b0]">●</span> SSL
         </span>
         <span>
-          <span className="text-[#7fe0b0]">●</span> Hosted in the EU
+          <span className="text-[#7fe0b0]">●</span> Gostovanje v EU
         </span>
         <span>
-          <span className="text-[#7fe0b0]">●</span> Daily backups
+          <span className="text-[#7fe0b0]">●</span> Dnevne varnostne kopije
         </span>
       </span>
     </div>
