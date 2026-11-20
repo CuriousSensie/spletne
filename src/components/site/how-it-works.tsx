@@ -5,6 +5,7 @@ import { ShaderCanvas } from "@/components/shaders/shader-canvas";
 import { ASSEMBLE, CONTOURS, LIFTOFF, PACKETS, TAPS } from "@/components/shaders/library";
 import { PALETTES, type Palette } from "@/components/shaders/palettes";
 import { home } from "@/content/home";
+import { EmTitle } from "./em-title";
 
 /** Copy lives in content/home.ts; each step adds its background graphic. */
 const VISUALS: readonly { frag: string; palette: Palette }[] = [
@@ -67,9 +68,7 @@ export function HowItWorks() {
             <div className="grid gap-3">
               <p className="font-mono text-[11px] tracking-[0.18em] text-ink/55 uppercase">{t.label}</p>
               <h2 id="process-title" className="max-w-[18ch] text-[clamp(1.7rem,5vw,3.5rem)] leading-[1.02] font-light tracking-[-0.045em] text-balance">
-                {t.title.before}
-                <em className="font-serif font-normal tracking-[-0.01em]">{t.title.em}</em>
-                {t.title.after}
+                <EmTitle title={t.title} />
               </h2>
             </div>
             <p className="font-mono text-[11px] tracking-[0.16em] text-ink/55 uppercase tabular-nums" aria-live="polite">

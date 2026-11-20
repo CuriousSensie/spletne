@@ -5,6 +5,7 @@ import { LIFTOFF } from "@/components/shaders/library";
 import { PALETTES } from "@/components/shaders/palettes";
 import { home } from "@/content/home";
 import { useCountUp, useInViewOnce } from "./hooks";
+import { EmTitle } from "./em-title";
 
 const t = home.pricing;
 const euro = (n: number): string => new Intl.NumberFormat("en-IE", { maximumFractionDigits: 0 }).format(Math.round(n));
@@ -50,8 +51,7 @@ export function Pricing() {
         <div ref={ref} className="grid content-start gap-6 lg:col-span-5 lg:sticky lg:top-12 lg:self-start">
           <p className="font-mono text-[11px] tracking-[0.18em] text-ink/55 uppercase">{t.label}</p>
           <h2 id="pricing-title" className="max-w-[14ch] text-[clamp(1.85rem,5.4vw,4rem)] leading-[1.02] font-light tracking-[-0.045em] text-balance">
-            {t.title.before}
-            <em className="font-serif font-normal tracking-[-0.01em]">{t.title.em}</em>
+            <EmTitle title={t.title} />
           </h2>
           <p className="max-w-[36ch] text-[16px] leading-snug text-ink/60">{t.sub}</p>
 

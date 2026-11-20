@@ -3,6 +3,7 @@
 import { useActionState, useRef, useState } from "react";
 import { openPreview, type OpenPreviewState } from "@/app/actions/open-preview";
 import { home } from "@/content/home";
+import { EmTitle } from "./em-title";
 
 const t = home.previewAccess;
 const LENGTH = 6;
@@ -68,8 +69,7 @@ export function PreviewAccess() {
         <div className="grid content-center gap-6 lg:col-span-6">
           <p className="font-mono text-[11px] tracking-[0.18em] text-mist uppercase">{t.label}</p>
           <h2 id="preview-title" className="max-w-[13ch] text-[clamp(2rem,5.6vw,4.4rem)] leading-[1.0] font-light tracking-[-0.05em]">
-            {t.title.before}
-            <em className="font-serif font-normal tracking-[-0.01em]">{t.title.em}</em>
+            <EmTitle title={t.title} />
           </h2>
           {t.body.map((p) => (
             <p key={p} className="max-w-[48ch] text-[16px] leading-relaxed text-foam/65">

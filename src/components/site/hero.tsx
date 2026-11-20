@@ -3,6 +3,7 @@ import { STREAKS } from "@/components/shaders/library";
 import { PALETTES } from "@/components/shaders/palettes";
 import { home } from "@/content/home";
 import { Wordmark } from "./wordmark";
+import { EmTitle } from "./em-title";
 
 const t = home.hero;
 
@@ -40,8 +41,7 @@ export function Hero() {
             lang={t.lang}
             className="rise-in mt-4 max-w-[12ch] text-[clamp(2.8rem,9vw,8rem)] leading-[0.92] font-light tracking-[-0.055em] text-balance [animation-delay:120ms]"
           >
-            {t.title.before}
-            <em className="font-serif font-normal tracking-[-0.02em]">{t.title.em}</em>
+            <EmTitle title={t.title} emClassName="font-serif font-normal tracking-[-0.02em]" />
           </h1>
           <a
             href="#start"
