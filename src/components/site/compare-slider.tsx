@@ -90,13 +90,13 @@ function Stage({
         className="pointer-events-none absolute top-3 left-3 rounded-full bg-black/55 px-2.5 py-1 font-mono text-[10px] tracking-[0.14em] text-white uppercase backdrop-blur transition-opacity"
         style={{ opacity: pos > 12 ? 1 : 0 }}
       >
-        After
+        Novo
       </span>
       <span
         className="pointer-events-none absolute top-3 right-3 rounded-full bg-black/55 px-2.5 py-1 font-mono text-[10px] tracking-[0.14em] text-white uppercase backdrop-blur transition-opacity"
         style={{ opacity: pos < 88 ? 1 : 0 }}
       >
-        Before
+        Staro
       </span>
 
       <div className="pointer-events-none absolute inset-y-0 w-px bg-white/90 shadow-[0_0_12px_rgb(255_255_255/0.5)]" style={{ left: `${pos}%` }}>
@@ -177,11 +177,11 @@ export function CompareSlider() {
       <div
         role="slider"
         tabIndex={0}
-        aria-label="Compare the old and new website"
+        aria-label="Primerjava stare in nove spletne strani"
         aria-valuemin={0}
         aria-valuemax={100}
         aria-valuenow={Math.round(pos)}
-        aria-valuetext={`${Math.round(pos)}% of the redesign shown`}
+        aria-valuetext={`Prikazano ${Math.round(pos)} % nove strani`}
         onKeyDown={(e) => {
           const step = e.shiftKey ? 20 : 5;
           const map: Record<string, number> = { ArrowLeft: pos - step, ArrowRight: pos + step, Home: 0, End: 100 };
