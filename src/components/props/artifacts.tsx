@@ -96,7 +96,7 @@ export function Artifacts() {
           <FakeQr />
         </div>
         <p className="mt-3 text-[11px] text-[#07172a]/50">Your preview</p>
-        <p className="truncate text-sm font-medium">preview.bespoke.studio/northline</p>
+        <p className="truncate text-sm font-medium">preview.spletne.com/northline</p>
       </div>
       <div className={`${CARD} bottom-10 left-[10%] flex items-center gap-4`} style={depth(40)}>
         <ScoreRing value={score} />

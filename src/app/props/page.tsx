@@ -11,7 +11,7 @@ import { ShaderField } from "@/components/props/shader-field";
 import { Spotlight } from "@/components/props/spotlight";
 
 export const metadata: Metadata = {
-  title: "Prop lab | Bespoke",
+  title: "Prop lab | Spletne",
   robots: { index: false },
 };
 
@@ -39,7 +39,7 @@ export default function PropsPage() {
   return (
     <main className="min-h-svh bg-[#07172a] text-[#f4f1e9]">
       <header className="mx-auto max-w-[88rem] px-5 pt-20 pb-12 sm:px-8 lg:px-10">
-        <p className="text-xs tracking-widest text-white/50 uppercase">Bespoke · Prop lab</p>
+        <p className="text-xs tracking-widest text-white/50 uppercase">Spletne · Prop lab</p>
         <h1 className="mt-3 max-w-[24ch] text-4xl font-medium tracking-[-0.04em] text-balance sm:text-5xl">
           Ten attention-grabbing props. Pick your favourites.
         </h1>

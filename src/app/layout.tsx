@@ -13,9 +13,12 @@ const serif = Instrument_Serif({
 const mono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono", display: "swap" });
 
 export const metadata: Metadata = {
-  title: "Bespoke · Conversion focused landing pages tailored to your business and audience.",
+  metadataBase: new URL("https://www.spletne.com"),
+  title: "Spletne · Conversion focused landing pages tailored to your business and audience.",
   description:
-    "We are a bespoke web studio here to help you rebuild and revamp your websites with a focus on conversion, high quality copy, tailored to your business and target audience. Send us your current site and we redesign and rebuild the new one. If you love it, it’s yours. If not, you pay nothing.",
+    "Spletne is a web studio here to help you rebuild and revamp your websites with a focus on conversion, high quality copy, tailored to your business and target audience. Send us your current site and we redesign and rebuild the new one. If you love it, it’s yours. If not, you pay nothing.",
+  alternates: { canonical: "/" },
+  openGraph: { siteName: "Spletne", url: "https://www.spletne.com", type: "website" },
 };
 
 export const viewport: Viewport = {

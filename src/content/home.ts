@@ -183,6 +183,6 @@ export const home = {
       { href: "#pricing", label: "Pricing" },
       { href: "#faq", label: "FAQ" },
     ],
-    copyright: "© 2026 Bespoke",
+    copyright: "© 2026 Spletne",
   },
 } as const;

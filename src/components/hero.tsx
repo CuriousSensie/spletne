@@ -16,7 +16,7 @@ export function Hero() {
       <div className="relative z-10 mx-auto grid min-h-[90svh] w-full max-w-[88rem] grid-cols-1 content-center gap-6 px-5 py-32 sm:px-8 md:py-40 lg:grid-cols-12 lg:gap-8 lg:px-10">
         <div className="flex min-w-0 items-start gap-3 sm:items-center lg:col-span-6">
           <Link
-            aria-label="Bespoke home"
+            aria-label="Spletne home"
             href="/"
             className="shrink-0 rounded-md outline-none focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current"
           >
@@ -35,7 +35,7 @@ export function Hero() {
         </div>
         <div className="hero-text-reveal hero-text-reveal--support min-w-0 pl-12 sm:pl-13 lg:col-span-5 lg:col-start-8 lg:self-center lg:pl-0">
           <p className="max-w-[48ch] text-lg/6 text-pretty lg:max-w-[60ch]">
-            <span className="font-medium text-[#f4f1e9] sm:block">Bespoke is a boutique web studio.</span>{" "}
+            <span className="font-medium text-[#f4f1e9] sm:block">Spletne is a boutique web studio.</span>{" "}
             <span className="font-medium text-balance text-[#f4f1e9]/52 sm:block">
               Pay only if you love what we built.
             </span>

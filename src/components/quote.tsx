@@ -15,7 +15,7 @@ export function Quote() {
               className="group inline-flex w-fit items-center gap-2 text-base font-medium text-[#f4f1e9]/82 transition-colors duration-[var(--duration-fast)] ease-[var(--ease-smooth-out)] outline-none hover:text-[#f4f1e9] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#f4f1e9] motion-reduce:transition-none sm:whitespace-nowrap"
             >
               <span className="underline decoration-[#f4f1e9]/42 decoration-1 underline-offset-4 transition-[text-decoration-color] duration-[var(--duration-fast)] group-hover:decoration-[#f4f1e9]/80 motion-reduce:transition-none">
-                Read why we built Bespoke
+                Read why we built Spletne
               </span>
               <svg aria-hidden="true" className="size-3.5" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 16 16">
                 <path d="M3 8h10M9 4l4 4-4 4" strokeLinecap="round" strokeLinejoin="round" />

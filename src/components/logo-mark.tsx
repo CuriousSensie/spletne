@@ -2,7 +2,7 @@ interface LogoMarkProps {
   className?: string;
 }
 
-/** Original Bespoke monogram: a rounded square with a plus. */
+/** Original Spletne monogram: a rounded square with a plus. */
 export function LogoMark({ className = "size-4" }: LogoMarkProps) {
   return (
     <svg

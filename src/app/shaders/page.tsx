@@ -13,7 +13,7 @@ import type { PaletteKey } from "@/components/shaders/palettes";
 import { ShaderStage } from "@/components/shaders/shader-stage";
 
 export const metadata: Metadata = {
-  title: "Shader lab | Bespoke",
+  title: "Shader lab | Spletne",
   robots: { index: false },
 };
 
@@ -90,7 +90,7 @@ async function ShaderList({ searchParams }: Pick<PageProps<"/shaders">, "searchP
     <>
       {!solo && (
         <header className="mx-auto max-w-[88rem] px-5 pt-20 pb-12 sm:px-8 lg:px-10">
-          <p className="text-xs tracking-widest text-white/50 uppercase">Bespoke · Shader lab</p>
+          <p className="text-xs tracking-widest text-white/50 uppercase">Spletne · Shader lab</p>
           <h1 className="mt-3 max-w-[26ch] text-4xl font-medium tracking-[-0.04em] text-balance sm:text-5xl">
             Seven living backgrounds. Every one takes any palette.
           </h1>

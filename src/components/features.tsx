@@ -101,7 +101,7 @@ export function Features() {
               </div>
             </div>
 
-            <ol className="order-1 grid gap-1 lg:col-span-5" aria-label="Bespoke features">
+            <ol className="order-1 grid gap-1 lg:col-span-5" aria-label="Spletne features">
               {FEATURES.map((f, i) => {
                 const isOpen = i === open;
                 return (

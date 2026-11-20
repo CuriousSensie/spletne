@@ -70,7 +70,7 @@ export function Manifesto() {
   return (
     <section
       id="conversation-intro"
-      aria-label="How Bespoke works"
+      aria-label="How Spletne works"
       className="bg-[var(--midnight-paper)] py-16 text-[#07172a] sm:py-20 lg:py-24"
     >
       <div className="mx-auto w-full max-w-[88rem] px-5 sm:px-8 lg:px-10">
@@ -134,7 +134,7 @@ export function Manifesto() {
                 <div className="manifesto-vignette-footer">
                   <div className="flex shrink-0 items-center gap-2">
                     <span className="size-2 rounded-full bg-[var(--midnight-orange)]" />
-                    <p className="manifesto-vignette-speaker">Bespoke</p>
+                    <p className="manifesto-vignette-speaker">Spletne</p>
                   </div>
                   <p>Preview · Day 3</p>
                 </div>
@@ -165,7 +165,7 @@ export function Manifesto() {
                   <div className="relative flex h-13 items-center justify-between gap-4 px-3 sm:h-13.5 sm:px-4">
                     <div className="flex items-center gap-3">
                       <span className="size-[18px] rounded-[5px] border border-white/30" />
-                      <span className="hidden text-sm font-medium tracking-tight sm:inline">Bespoke</span>
+                      <span className="hidden text-sm font-medium tracking-tight sm:inline">Spletne</span>
                     </div>
                     <div className="pointer-events-none absolute inset-0 flex items-center justify-center text-xs leading-none text-white/45">
                       Sample preview · About 2 minutes

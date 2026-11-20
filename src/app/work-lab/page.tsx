@@ -5,7 +5,7 @@ import { ConceptLand } from "@/components/work/concept-land";
 import { ConceptRail } from "@/components/work/concept-rail";
 
 export const metadata: Metadata = {
-  title: "Work lab | Bespoke",
+  title: "Work lab | Spletne",
   robots: { index: false },
 };
 

@@ -5,7 +5,7 @@ import { ConceptLayers } from "@/components/get/concept-layers";
 import { ConceptLetter } from "@/components/get/concept-letter";
 
 export const metadata: Metadata = {
-  title: "What-you-get lab | Bespoke",
+  title: "What-you-get lab | Spletne",
   robots: { index: false },
 };
 

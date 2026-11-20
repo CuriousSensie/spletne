@@ -185,7 +185,7 @@ export function Process() {
             >
               <div className="flex h-[46px] items-center gap-2 border-b border-white/[0.08] px-[18px] text-xs text-[#f4f1e9]/75">
                 <span className="size-3.5 rounded-[4px] border border-white/40" />
-                <span>Bespoke</span>
+                <span>Spletne</span>
               </div>
               <div className="flex h-[204px] flex-col px-6 py-5">
                 <p className="text-[10px] text-[#f4f1e9]/55">Northline Dental · Preview</p>
@@ -210,7 +210,7 @@ export function Process() {
             >
               <div className="flex items-center gap-2 border-b border-[#07172a]/[0.03] px-[18px] py-[13px] text-xs">
                 <span className="size-3.5 rounded-[4px] border border-[#07172a]/25" />
-                <span>Bespoke</span>
+                <span>Spletne</span>
               </div>
               <div className="px-6 py-[30px]">
                 <span className="mb-[22px] block h-1.5 w-[42%] rounded bg-[#07172a]/[0.04]" />

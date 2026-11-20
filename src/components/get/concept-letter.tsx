@@ -87,7 +87,7 @@ export function ConceptLetter() {
                 ))}
               </div>
               <p className="mt-6 font-serif text-[clamp(1.1rem,1.6vw,1.35rem)] italic">Yours,</p>
-              <svg viewBox="0 0 240 70" className="mt-1 h-14 w-48 text-ink" aria-label="Signed, Bespoke">
+              <svg viewBox="0 0 240 70" className="mt-1 h-14 w-48 text-ink" aria-label="Signed, Spletne">
                 <path
                   ref={sig}
                   pathLength={1}
@@ -101,7 +101,7 @@ export function ConceptLetter() {
                   style={{ strokeDashoffset: 1 }}
                 />
               </svg>
-              <p className="font-mono text-[10px] tracking-[0.16em] text-ink/45 uppercase">Bespoke studio</p>
+              <p className="font-mono text-[10px] tracking-[0.16em] text-ink/45 uppercase">Spletne studio</p>
 
               <div
                 ref={stamp}

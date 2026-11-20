@@ -85,7 +85,7 @@ const ITEMS: readonly Item[] = [
     from: { x: -100, y: -40, r: -14 },
     object: (
       <div className="w-[56%] bg-white px-4 pt-4 pb-6 font-mono text-[clamp(8px,0.9vw,11px)] text-ink shadow-[0_20px_40px_-15px_rgb(0_0_0/0.6)] [mask-image:linear-gradient(black_calc(100%-8px),transparent_calc(100%-8px)),radial-gradient(circle_at_6px_100%,transparent_5px,black_5.5px)] [mask-size:100%_100%,12px_8px] [mask-position:0_0,0_100%] [mask-repeat:no-repeat,repeat-x]">
-        <p className="tracking-[0.16em] uppercase opacity-60">Bespoke</p>
+        <p className="tracking-[0.16em] uppercase opacity-60">Spletne</p>
         <p className="mt-3 flex justify-between">
           <span>Preview</span>
           <span>€0</span>

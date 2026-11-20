@@ -85,7 +85,7 @@ export function Waitlist() {
         </div>
 
         <footer className="flex flex-col gap-5 border-t border-white/12 pt-7 text-base text-white/48 sm:flex-row sm:items-center sm:justify-between sm:text-[0.8125rem]">
-          <p>© 2026 Bespoke · Ljubljana, SI</p>
+          <p>© 2026 Spletne · Ljubljana, SI</p>
           <nav aria-label="Footer navigation" className="flex flex-wrap items-center gap-6">
             <a href="#" className="font-normal transition-colors duration-[var(--duration-fast)] hover:text-white/78 motion-reduce:transition-none">
               Privacy Policy
