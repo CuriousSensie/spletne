@@ -20,17 +20,16 @@ export const home = {
     lang: "sl",
     title: { before: "Ste že razmišljali o novi spletni strani?" },
     aside: "Najprej jo izdelamo. Plačate šele, če vam je všeč.",
-    cta: "Preizkusite brez obveznosti",
+    cta: "Preizkusite",
     scroll: "Nižje",
   },
 
   whatWeDo: {
-    title: { lang: "sl", text: "Morda je čas za posodobitev" },
+    title: { lang: "sl", text: "Vaša spletna stran je vaš prvi stik" },
     /** PLACEHOLDER: subheadline to come from the collaborator. */
-    sub: "Stranke vas ocenijo v nekaj sekundah. Kaj vidijo pri vas?",
+    sub: "Lahko prinese nove stranke ali pa jih odžene h konkurenci. Kako je pri vas?",
   },
   
-
   howItWorks: {
     label: "Kako poteka",
     title: { before: "Štirje koraki. Naročite šele, ko boste zadovoljni." },
@@ -38,18 +37,18 @@ export const home = {
     steps: [
       {
         title: "Pošljete",
-        meta: "O depozitu",
-        body: "Pošljete naslov svoje svoje strani (ali predstavite podjetje, če strani še nimate). Lahko dodate tudi okvirne želje glede vsebine, izgleda, dinamike. Dodali boste 20 € depozita, ki ga v celoti in brez vprašanj vrnemo, če dizajn ne bo ustrezal vašim pričakovanjem.",
+        meta: "20 € rezervacije",
+        body: "Pošljete naslov svoje strani (ali predstavite podjetje, če strani še nimate). Lahko dodate tudi okvirne želje glede vsebine, dizajna, dinamike. Dodali boste 20 € rezervacije, ki jo v celoti in brez vprašanj vrnemo, če dizajn ne bo ustrezal vašim pričakovanjem.",
       },
       {
         title: "Izdelamo",
         meta: "Predogled bo viden samo vam",
-        body: "Stran bomo analizirali, poiskali najbolj optimalne rešitve in jo v naslednjih 24 urah izdelali. Skrita bo pred javnostjo in vidna samo preko gesla, ki vam ga pošljemo.",
+        body: "Stran bomo analizirali, poiskali najbolj optimalne rešitve in jo v naslednjih 24 urah izdelali. Skrita bo pred javnostjo in vidna samo z geslom, ki vam ga pošljemo.",
       },
       {
         title: "Odločite se",
         meta: "Če ne ustreza",
-        body: "V primeru, da spletna stran ne odgovarja vašim pričakovanjem, jo lahko enostavno z enim klikom stran sami izbrišete. Brez obveznosti, brez vprašanj, depozit pa bo povrnjen po vaši zahtevi (gre za rezervacijo, ne za dejanski depozit).",
+        body: "Če spletna stran ne odgovarja vašim pričakovanjem, jo lahko enostavno z enim klikom stran sami izbrišete. Brez obveznosti, brez vprašanj, rezervacija pa bo povrnjena po vaši zahtevi.",
       },
       {
         title: "Dokončamo",
@@ -61,21 +60,21 @@ export const home = {
 
   previewAccess: {
     label: "Predogled vaše nove strani",
-    title: { before: "Za ogled vnesite geslo" },
+    title: { before: "Zasebni ogled" },
     body: [
       "Ko naslovno stran dokončamo (korak 02), vam bomo poslali geslo. Vnesli ga boste na desni strani in stran bo vidna samo vam.",
-      "Predogled ne pomeni, da je stran dokončana in da povezave delujejo, bo pa dovolj, da dobite vpogled v predviden dizajn, vašo predstavitev, izgled na telefonu, morda pa dobite še kakšno idejo za dopolnitev.",
+      "Predogled ne pomeni, da je stran dokončana in da povezave delujejo, bo pa dovolj, da dobite vpogled v predviden dizajn, vašo predstavitev, videz na telefonu, morda pa dobite še kakšno idejo za dopolnitev.",
     ],
     primary: { label: "Povezava do obstoječe strani", href: "#start" },
     secondary: { label: "Kako deluje", href: "#process" },
     card: {
       eyebrow: "Zasebni ogled",
-      title: "Vnesite geslo",
-      text: "Geslo vam pošljemo po e-pošti.",
+      title: "Vnesi geslo",
+      text: "Geslo pošljemo po e-pošti.",
       inputLabel: "Vnos gesla",
       button: "Prikaži stran",
       checking: "Preverjam…",
-      note: "Op. Geslo včasih konča v SPAM mapi na vašem emailu. Preverite tudi to, če gesla niste prejeli.",
+      note: "Op. Geslo včasih konča v mapi z neželeno pošto. Preverite tudi to, če gesla niste prejeli.",
     },
     errors: {
       format: "Geslo je sestavljeno iz 6 črk ali številk. Preverite email, ki smo vam ga poslali.",
@@ -85,58 +84,58 @@ export const home = {
 
   pricing: {
     label: "Cenik",
-    title: { before: "Brezplačno, razen če vas navdušimo." },
+    title: { before: "Brezplačno. Razen če vas navdušimo." },
     sub: "Dokončno ceno oblikujemo šele v zadnjem koraku, ko predviden dizajn že potrdite in dodate morebitne nadgradnje.",
     prices: [
-      { amount: 0, label: "Če vas ne prepričamo", note: "Vaših 20 € depozita bo povrnjenih." },
+      { amount: 0, label: "Če vas ne prepričamo", note: "20 € rezervacije bo povrnjenih." },
       { amount: 249, label: "Če jo želite dokončati", note: "Moderna predstavitev na eni strani" },
     ],
     cta: "Dodaj povezavo do svoje strani",
     includesLabel: "Kaj je vključeno",
     includes: [
-      { title: "Moderna predstavitev na eni strani", text: "Do največ šest sekcij/blokov." },
+      { title: "Moderna predstavitev na eni strani", text: "Do šest sekcij/blokov." },
       { title: "Povezava s socialnimi omrežji", text: "Vse povezave do vaših socialnih omrežij in drugih spletnih strani." },
       { title: "Kontaktni obrazec ali gumb za klic", text: "Stranke vas lahko pokličejo ali pišejo z enim dotikom." },
       { title: "Piškotki in obvezne pravne strani", text: "Podatki o ponudniku, politika zasebnosti in obvestilo o piškotkih, prilagojeni vaši strani." },
       { title: "Optimizacija slik", text: "Optimizacija in hitro nalaganje strani." },      
       { title: "Osnovni SEO", text: "Da vas Google najde in pokaže v iskalnikih." },
       { title: "Mobilna verzija vaše strani", text: "Večina vaših strank prihaja do vas preko telefonov, zato je to prioriteta." },
-      { title: "Dopolnila in spremembe", text: "Včasih šele po ogledu ugotovimo, da bi bila dobrodošla kakšna manjša sprememba." },
-      { title: "Izdelava v treh dneh", text: "Potrudili se bomo, da je vaša stran pravočasno." },
-      { title: "Namestitev na vašo domeno", text: "Stran namestimo na vašo obstoječo domeno in poskrbimo, da vse deluje." },
+      { title: "Dopolnila in spremembe", text: "Včasih šele po ogledu skupaj ugotovimo, da bi bila dobrodošla kakšna manjša sprememba." },
+      { title: "Izdelava v treh dneh", text: "Potrudili se bomo, da je vaša stran pravočasno izdelana." },
+      { title: "Namestitev na vašo domeno", text: "Stran namestimo na vašo domeno in poskrbimo, da vse deluje." },
     ],
     extras: "Rabite več strani, nadstandardno optimizacijo SEO, trgovino, plačila, avtomatizacije? Pogovorimo se in našli bomo rešitve.",
   },
 
   whatYouGet: {
     label: "Kaj dobite",
-    title: { before: "Vsaka plast posebej" },
+    title: { before: "Stran, ki odpira nove priložnosti" },
     layers: {
       domain: { name: "Namestitev", line: "Vaša domena, vaš prostor na spletu. Mi poskrbimo, da vse deluje." },
       code: { name: "Koda", line: "Pregledna in urejena, da jo razume vsak razvijalec. Lastnik ste vi." },
-      structure: { name: "Struktura", line: "Jasna zgradba, da vas Google razume, najde in pokaže." },
-      design: { name: "Dizajn", line: "Sodoben, jasen, pregleden in tudi prilagojen telefonu. Brez predlog." },
-      words: { name: "Teksti", line: "Jasna, kratka in prepričljiva, brez praznih fraz." },
+      structure: { name: "Struktura", line: "Jasna zgradba, da vas Google razume, najde in prikaže." },
+      design: { name: "Dizajn", line: "Sodoben, jasen, pregleden, prilagojen telefonu." },
+      words: { name: "Besedila", line: "Jasna, kratka, prepričljiva. Brez praznih fraz." },
     },
-    states: { finished: "Kompletna stran", assembled: "Sestavljena", hint: "Razstavi jo.", closing: "Vaša nova spletna stran.", layerWord: "Plast" },
+    states: { finished: "Bolj vidni. Bolj prepričljivi.", assembled: "Sestavljena", hint: "Razstavi jo.", closing: "Vaša nova spletna stran.", layerWord: "Plast" },
   },
 
   faq: {
     label: "Vprašanja",
     title: { before: "Pogosta vprašanja" },
-    more: { before: "Imate še kakšno vprašanje?", link: "Pišite nam." },
+    more: { before: "Imate vprašanje? ", link: "Pišite nam." },
     items: [
       {
-        q: "Koliko stane spletna stran za moje podjetje?",
-        a: "249 € za enostransko predstavitveno stran, če se odločite, da jo obdržite. Če ne, vas ne stane nič: depozit 20 € vam vrnemo. Brez rizika.",
+        q: "Koliko stane spletna stran?",
+        a: "249 € za enostransko predstavitveno stran, če se odločite, da jo obdržite. Če ne, vas ne stane nič: rezervacija 20 € bo povrnjena. Brez rizika.",
       },      
       {
-        q: "Zakaj je potreben depozit 20 €?",
-        a: "Brezplačno delamo do trenutka, ko vas navdušimo. Depozit potrdi, da je vaše povpraševanje resno, nas pa vsaj delno obvaruje pred zlorabami. Brez tega ponudba ne bi bila tako ugodna. ",
+        q: "Zakaj je potrebna rezervacija 20 €?",
+        a: "Brezplačno delamo do trenutka, ko vas navdušimo. Rezervacija potrdi, da je vaše povpraševanje resno, nas pa vsaj delno obvaruje pred zlorabami. Brez tega ponudba ne bi bila tako ugodna. ",
       },      
       {
-        q: "Kako poteka depozit?",
-        a: "Plačila obdelujemo prek Stripe, enega največjih ponudnikov spletnih plačil. Stripe vam na kartici le rezervira 20 €. Denar ostane vaš in ne gre na naš račun. Če se ne odločite za nadaljevanje, se rezervacija samodejno sprosti, najkasneje po šestih dneh, na vašem računu pa se odblokira v nekaj dneh, odvisno od banke. Če stran obdržite, se 20 € všteje v ceno.",
+        q: "Kako poteka rezervacija?",
+        a: "Plačila obdelujemo prek Stripe, enega največjih ponudnikov spletnih plačil. Stripe na vaši kartici rezervira 20 €; denar tako ostane na vašem računu. Če se ne odločite za nadaljevanje, se rezervacija sprosti in na vašem računu odblokira v nekaj dneh, odvisno od banke. Če stran obdržite, se 20 € všteje v ceno.",
       },      
       {
         q: "Ali vzamete vsako povpraševanje v delo?",
@@ -144,7 +143,7 @@ export const home = {
       },
       {
         q: "Kaj če s predlaganim dizajnom ne bomo zadovoljni?",
-        a: "Pogovorimo se in skupaj poiščemo boljše rešitve. Če želite, lahko tudi kadar koli odstopite. V tem primeru rezervacijo 20 € takoj sprostimo.",
+        a: "Pogovorimo se in skupaj poiščemo boljše rešitve. Če želite, lahko tudi odstopite. V tem primeru bo Stripe rezervacijo 20 € v nekaj dneh sprostil.",
       },
       {
         q: "Kaj je z našimi podatki, varnostjo?",
@@ -171,7 +170,7 @@ export const home = {
 
   start: {
     label: "Začnimo",
-    title: { before: "Vaša nova stran je morda oddaljena samo en klik." },
+    title: { before: "En klik do nove strani." },
     body: "Pošljite nam povezavo do obstoječe strani ali opišite svoje želje. Običajno odgovorimo v roku 24 ur z že pripravljenim okvirom načrta.",
     form: {
       site: { label: "Trenutna stran", placeholder: "našastran.si" },
@@ -183,7 +182,7 @@ export const home = {
         link: "Politika zasebnosti",
         href: "/sl/zasebnost",
       },
-      due: "Cena: 0 €",
+      due: "Cena: 0€",
       okEyebrow: "Povpraševanje oddano",
       ok: { before: "Prejeli smo povpraševanje. Odgovorili bomo ", after: " predvidoma v enem dnevu." },
       errors: {
@@ -195,7 +194,6 @@ export const home = {
   },
 
   footer: {
-    city: "Slovenija",
     links: [
       { href: "#process", label: "Kako poteka" },
       { href: "#pricing", label: "Cenik" },
