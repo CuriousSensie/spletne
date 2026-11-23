@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, type CSSProperties } from "react";
 import Image from "next/image";
 import { home } from "@/content/home";
 import { clamp01, easeInOutCubic, range } from "@/components/work/scroll";
+import { EmTitle } from "./em-title";
 
 /**
  * (05) What you get: the finished site, taken apart.
@@ -328,8 +329,7 @@ export function Exploded() {
           <div className="grid gap-4">
             <p className="font-mono text-[11px] tracking-[0.18em] text-mist uppercase">{C.label}</p>
             <h2 id="get-title" className="text-[clamp(1.85rem,4.6vw,3.6rem)] leading-[1.02] font-light tracking-[-0.045em]">
-              {C.title.before}
-              <em className="font-serif font-normal tracking-[-0.01em]">{C.title.em}</em>
+              <EmTitle title={C.title} />
             </h2>
           </div>
           <p className="hidden pb-1 font-mono text-[11px] tracking-[0.16em] text-foam/50 uppercase tabular-nums sm:block" aria-hidden="true">

@@ -3,6 +3,7 @@
 import { useId, useState } from "react";
 import { home } from "@/content/home";
 import { Exploded } from "./exploded";
+import { EmTitle } from "./em-title";
 
 /* ------------------------------------------------------------------ */
 /* FAQ                                                                 */
@@ -69,8 +70,7 @@ export function Details() {
           <div className="grid content-start gap-5 lg:col-span-4 lg:sticky lg:top-12 lg:self-start">
             <p className="font-mono text-[11px] tracking-[0.18em] text-mist uppercase">{t.label}</p>
             <h3 className="text-[clamp(1.7rem,4vw,3rem)] leading-[1.02] font-light tracking-[-0.045em]">
-              {t.title.before}
-              <em className="font-serif font-normal tracking-[-0.01em]">{t.title.em}</em>
+              <EmTitle title={t.title} />
             </h3>
             <p className="max-w-[32ch] text-[15px] leading-snug text-foam/60">
               {t.more.before}{" "}

@@ -5,6 +5,7 @@ import { CONTACT_EMAIL } from "./contact";
 import { home } from "@/content/home";
 import { StartForm } from "./start-form";
 import { Wordmark } from "./wordmark";
+import { EmTitle } from "./em-title";
 
 const t = home.start;
 
@@ -19,8 +20,7 @@ export function FinalCta() {
         <div className="grid content-end gap-6 lg:col-span-6">
           <p className="font-mono text-[11px] tracking-[0.18em] text-mist uppercase">{t.label}</p>
           <h2 id="start-title" className="max-w-[11ch] text-[clamp(2.6rem,9vw,7rem)] leading-[0.92] font-light tracking-[-0.055em]">
-            {t.title.before}
-            <em className="font-serif font-normal tracking-[-0.02em]">{t.title.em}</em>
+            <EmTitle title={t.title} emClassName="font-serif font-normal tracking-[-0.02em]" />
           </h2>
         </div>
         <div className="grid content-end gap-6 lg:col-span-6 lg:pb-3">
