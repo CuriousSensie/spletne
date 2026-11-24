@@ -80,6 +80,8 @@ export const home = {
     errors: {
       format: "Geslo je sestavljeno iz 6 črk ali številk. Preverite email, ki smo vam ga poslali.",
       notFound: "Geslo je napačno. Poskusite ponovno ali nas kontaktirajte.",
+      tooMany: "Preveč poskusov. Poskusite znova čez nekaj minut.",
+      unavailable: "Storitev trenutno ni na voljo. Poskusite znova čez nekaj minut ali nas kontaktirajte.",
     },
   },
 
