@@ -33,10 +33,7 @@ export function FinalCta() {
 
       <footer className="mx-auto w-full max-w-[96rem] px-5 pb-8 sm:px-8 lg:px-12">
         <div className="flex flex-col gap-6 border-t border-foam/15 pt-6 sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex items-baseline gap-4">
-            <Wordmark />
-            <span className="font-mono text-[11px] tracking-[0.14em] text-foam/45 uppercase">{home.footer.city}</span>
-          </div>
+          <Wordmark />
           <nav aria-label="Noga strani" className="flex flex-wrap gap-x-6 gap-y-2 font-mono text-[11px] tracking-[0.14em] text-foam/55 uppercase">
             {home.footer.links.map((l) => (
               <a key={l.href} href={l.href} className="transition-colors hover:text-foam">

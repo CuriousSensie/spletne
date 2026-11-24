@@ -19,7 +19,8 @@ export const home = {
   hero: {
     lang: "sl",
     title: { before: "Ste že razmišljali o novi spletni strani?" },
-    aside: "Najprej jo izdelamo. Plačate šele, če vam je všeč.",
+    /** One entry per line. */
+    aside: ["Najprej jo izdelamo.", "Plačate šele, če vam je všeč."],
     cta: "Preizkusite",
     scroll: "Nižje",
   },
@@ -182,7 +183,7 @@ export const home = {
         link: "Politika zasebnosti",
         href: "/sl/zasebnost",
       },
-      due: "Cena: 0€",
+      due: "Cena: 0 €",
       okEyebrow: "Povpraševanje oddano",
       ok: { before: "Prejeli smo povpraševanje. Odgovorili bomo ", after: " predvidoma v enem dnevu." },
       errors: {

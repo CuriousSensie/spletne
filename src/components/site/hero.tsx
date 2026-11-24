@@ -10,8 +10,10 @@ const t = home.hero;
 export function Hero() {
   return (
     <section
+      id="top"
+      tabIndex={-1}
       aria-labelledby="hero-title"
-      className="relative isolate flex min-h-[600px] flex-col overflow-hidden bg-[radial-gradient(ellipse_at_30%_40%,#0f2f4a,#04101e_70%)] text-foam [height:100svh]"
+      className="relative isolate flex min-h-[600px] outline-none flex-col overflow-hidden bg-[radial-gradient(ellipse_at_30%_40%,#0f2f4a,#04101e_70%)] text-foam [height:100svh]"
     >
       <ShaderCanvas frag={STREAKS} palette={PALETTES.ocean} speed={0.9} scale={0.6} className="-z-20" />
       {/* Legibility: darken the bottom where the copy sits. */}
@@ -27,7 +29,7 @@ export function Hero() {
           ))}
         </nav>
         <a
-          href="#start"
+          href="#preview"
           className="rounded-full border border-foam/25 px-3.5 py-2 font-mono text-[11px] tracking-[0.14em] uppercase backdrop-blur-sm transition-colors hover:border-foam/60 hover:bg-foam/10"
         >
           {home.nav.pill}
@@ -59,14 +61,22 @@ export function Hero() {
         {/* Slanted subheading over its own reflection. */}
         <div className="rise-in [animation-delay:260ms] md:col-span-5 md:justify-self-end">
           <div>
-            <p lang={t.lang} className="max-w-[20ch] font-serif text-[clamp(1.6rem,3.2vw,2.8rem)] text-balance leading-[1.02] text-foam italic">
-              {t.aside}
+            <p lang={t.lang} className="font-serif text-[clamp(1.6rem,3.2vw,2.8rem)] leading-[1.02] text-foam italic">
+              {t.aside.map((line) => (
+                <span key={line} className="block lg:whitespace-nowrap">
+                  {line}
+                </span>
+              ))}
             </p>
             <p
               aria-hidden="true"
-              className="mt-1 max-w-[20ch] -scale-y-100 font-serif text-[clamp(1.6rem,3.2vw,2.8rem)] leading-[1.02] text-foam/45 italic select-none [mask-image:linear-gradient(to_top,black,transparent_75%)] blur-[0.5px]"
+              className="mt-1 -scale-y-100 font-serif text-[clamp(1.6rem,3.2vw,2.8rem)] leading-[1.02] text-foam/45 italic select-none [mask-image:linear-gradient(to_top,black,transparent_75%)] blur-[0.5px]"
             >
-              {t.aside}
+              {t.aside.map((line) => (
+                <span key={line} className="block lg:whitespace-nowrap">
+                  {line}
+                </span>
+              ))}
             </p>
           </div>
         </div>
