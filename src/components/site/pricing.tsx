@@ -8,7 +8,7 @@ import { useCountUp, useInViewOnce } from "./hooks";
 import { EmTitle } from "./em-title";
 
 const t = home.pricing;
-const euro = (n: number): string => new Intl.NumberFormat("en-IE", { maximumFractionDigits: 0 }).format(Math.round(n));
+const euro = (n: number): string => new Intl.NumberFormat("sl-SI", { maximumFractionDigits: 0 }).format(Math.round(n));
 
 /** One of the two possible prices. The keep-it price is the dark, emphasised tile. */
 function Price({ amount, label, note, dark, run }: { amount: number; label: string; note: string; dark: boolean; run: boolean }) {
@@ -22,11 +22,10 @@ function Price({ amount, label, note, dark, run }: { amount: number; label: stri
       )}
       <p className={`font-mono text-[11px] tracking-[0.16em] uppercase ${dark ? "text-mist" : "text-ink/55"}`}>{label}</p>
       <div className="grid gap-2">
-        <p className="flex items-start gap-1" aria-label={`${euro(amount)} euro`}>
-          <span className="mt-[0.3em] text-xl font-light">€</span>
-          <span aria-hidden="true" className="text-[clamp(3.2rem,7vw,5rem)] leading-[0.85] font-light tracking-[-0.06em] tabular-nums">
-            {euro(shown)}
-          </span>
+        <p className="text-[clamp(3.2rem,7vw,5rem)] leading-[0.85] font-light tracking-[-0.06em]">
+          <span className="sr-only">{`${euro(amount)} €`}</span>
+          <span aria-hidden="true" className="tabular-nums">{euro(shown)}</span>
+          <span aria-hidden="true" className="ml-[0.2em] text-[0.7em] tracking-normal">€</span>
         </p>
         <p className={`text-[14px] leading-snug ${dark ? "text-foam/65" : "text-ink/60"}`}>{note}</p>
       </div>
