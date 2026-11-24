@@ -1,16 +1,6 @@
 import type { Metadata, Viewport } from "next";
-import { Geist_Mono, Instrument_Serif, Inter_Tight } from "next/font/google";
+import { preload } from "react-dom";
 import "./globals.css";
-
-const sans = Inter_Tight({ subsets: ["latin"], variable: "--font-inter-tight", display: "swap" });
-const serif = Instrument_Serif({
-  subsets: ["latin"],
-  weight: "400",
-  style: ["normal", "italic"],
-  variable: "--font-instrument-serif",
-  display: "swap",
-});
-const mono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono", display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.spletne.com"),
@@ -26,8 +16,13 @@ export const viewport: Viewport = {
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
+  // Fonts used above the fold (latin-ext carries č, š, ž); the rest load on demand via unicode-range.
+  preload("/fonts/inter-tight-latin-wght-normal.woff2", { as: "font", type: "font/woff2", crossOrigin: "anonymous" });
+  preload("/fonts/inter-tight-latin-ext-wght-normal.woff2", { as: "font", type: "font/woff2", crossOrigin: "anonymous" });
+  preload("/fonts/instrument-serif-latin-400-italic.woff2", { as: "font", type: "font/woff2", crossOrigin: "anonymous" });
+  preload("/fonts/instrument-serif-latin-ext-400-italic.woff2", { as: "font", type: "font/woff2", crossOrigin: "anonymous" });
   return (
-    <html lang="sl" className={`${sans.variable} ${serif.variable} ${mono.variable} antialiased`}>
+    <html lang="sl" className="antialiased">
       <body className="font-sans">{children}</body>
     </html>
   );
