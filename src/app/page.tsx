@@ -1,3 +1,4 @@
+import { BackToTop } from "@/components/site/back-to-top";
 import { Details } from "@/components/site/details";
 import { FinalCta } from "@/components/site/final-cta";
 import { SmoothScroll } from "@/components/site/smooth-scroll";
@@ -18,6 +19,7 @@ export default function HomePage() {
       <Details />
       <FinalCta />
       <SmoothScroll />
+      <BackToTop />
     </main>
   );
 }
