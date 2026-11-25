@@ -18,7 +18,7 @@ export const home = {
 
   hero: {
     lang: "sl",
-    title: { before: "Ste že razmišljali o novi spletni strani?" },
+    title: { before: "kaj pravite o novi spletni strani?" },
     /** One entry per line. */
     aside: ["Najprej jo izdelamo.", "Plačate šele, če vam je všeč."],
     cta: "Preizkusite",
