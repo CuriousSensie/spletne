@@ -9,7 +9,6 @@
 export const home = {
   nav: {
     links: [
-      { href: "/#pricing", label: "Cenik" },
       { href: "/vec", label: "Pogosta vprašanja" },
     ],
     pill: "Dodaj geslo",
@@ -240,11 +239,8 @@ export const home = {
 
   footer: {
     links: [
-      { href: "/#pricing", label: "Cenik" },
+      { href: "/#top", label: "Na vrh" },
       { href: "/vec", label: "Pogosta vprašanja" },
-      { href: "/splosni-pogoji", label: "Splošni pogoji" },
-      { href: "/politika-zasebnosti", label: "Politika zasebnosti" },
-      { href: "/piskotki", label: "Piškotki" },
     ],
     copyright: "Splošni pogoji | Politika zasebnosti | Piškotki",
   },
