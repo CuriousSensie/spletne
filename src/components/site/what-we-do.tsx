@@ -7,7 +7,7 @@ const t = home.whatWeDo;
 export function WhatWeDo() {
   return (
     <section id="what-we-do" aria-labelledby="what-title" className="relative flex min-h-svh scroll-mt-4 flex-col justify-center bg-foam text-ink">
-      <div className="mx-auto grid w-full max-w-[96rem] gap-8 px-5 py-16 sm:gap-10 sm:px-8 lg:px-12 lg:py-12">
+      <div className="mx-auto grid w-full max-w-[96rem] gap-8 px-5 py-16 sm:gap-10 sm:px-8 lg:px-12 lg:pt-20 lg:pb-12">
         <div className="grid justify-items-center gap-3 text-center">
           <h2
             id="what-title"

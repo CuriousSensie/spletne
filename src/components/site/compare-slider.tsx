@@ -173,7 +173,7 @@ export function CompareSlider() {
   );
 
   return (
-    <div ref={wrap} className="mx-auto w-full max-w-[min(76rem,calc((100svh-15rem)*1.6))]">
+    <div ref={wrap} className="mx-auto w-full max-w-[min(67.5rem,calc((100svh-15rem)*1.42))]">
       <div
         role="slider"
         tabIndex={0}
