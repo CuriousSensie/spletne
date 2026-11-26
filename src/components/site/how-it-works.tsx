@@ -6,6 +6,7 @@ import { ASSEMBLE, CONTOURS, LIFTOFF, PACKETS, TAPS } from "@/components/shaders
 import { PALETTES, type Palette } from "@/components/shaders/palettes";
 import { home } from "@/content/home";
 import { EmTitle } from "./em-title";
+import { ScrollCue } from "./scroll-cue";
 
 /** Copy lives in content/home.ts; each step adds its background graphic. */
 const VISUALS: readonly { frag: string; palette: Palette }[] = [
@@ -63,7 +64,7 @@ export function HowItWorks() {
   return (
     <section ref={sectionRef} id="process" aria-labelledby="process-title" className="relative h-[210svh] bg-foam text-ink">
       <div ref={stickyRef} className="sticky top-0 isolate flex h-svh flex-col overflow-hidden [--p:0]">
-        <div className="mx-auto flex h-full w-full max-w-[96rem] flex-col justify-center gap-6 px-5 py-8 sm:gap-10 sm:px-8 lg:px-12">
+        <div className="mx-auto flex h-full w-full max-w-[96rem] flex-col justify-center gap-6 px-5 pt-8 pb-20 sm:gap-10 sm:px-8 lg:px-12">
           <header className="flex flex-wrap items-end justify-between gap-x-8 gap-y-3">
             <div className="grid gap-3">
               <p className="font-mono text-[11px] tracking-[0.18em] text-ink/55 uppercase">{t.label}</p>
@@ -139,6 +140,11 @@ export function HowItWorks() {
               );
             })}
           </ol>
+        </div>
+
+        {/* Jumps past the pinned steps; Lenis rolls it to exactly where the next section starts. */}
+        <div className="absolute inset-x-0 bottom-0 mx-auto w-full max-w-[96rem] px-5 pb-6 sm:px-8 sm:pb-8 lg:px-12">
+          <ScrollCue href="#pricing" label={home.common.scroll} className="text-ink/55 hover:text-ink" />
         </div>
       </div>
     </section>
