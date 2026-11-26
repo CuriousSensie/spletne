@@ -40,7 +40,7 @@ export const home = {
     steps: [
       {
         title: "Pošljete",
-        meta: "Orišite pričakovanja",
+        meta: "Na kratko orišite smernice",
         body: "Pošljete naslov svoje strani (ali predstavite podjetje, če strani še nimate). Dodate lahko tudi želje glede videza in vsebine. Rezervacija 20 € potrdi povpraševanje",
       },
       {
@@ -56,7 +56,7 @@ export const home = {
       {
         title: "Dokončamo",
         meta: "Stran bo dokončana v treh dneh",
-        body: "Če vam je stran všeč, nadaljujemo. Upoštevamo vaše dopolnitve in spremembe, lahko se dogovorimo za dodatke, več strani, SEO, trgovino in drugo.",
+        body: "Če vam je stran všeč, nadaljujemo. Upoštevamo vaše dopolnitve, spremembe in uskladimo končno podobo in morebitne dodatke, npr. več strani, SEO, trgovino, avtomatizacije in šele na tej točki naročite.",
       },
     ],
   },
