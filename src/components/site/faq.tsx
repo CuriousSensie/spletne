@@ -2,8 +2,9 @@
 
 import { useId, useState } from "react";
 import { home } from "@/content/home";
-import { Exploded } from "./exploded";
+import { CONTACT_EMAIL } from "./contact";
 import { EmTitle } from "./em-title";
+import { H2 } from "./styles";
 
 /* ------------------------------------------------------------------ */
 /* FAQ                                                                 */
@@ -58,23 +59,21 @@ const faqJsonLd = JSON.stringify({
 
 /* ------------------------------------------------------------------ */
 
-export function Details() {
+export function Faq() {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section id="what-you-get" aria-labelledby="get-title" className="relative bg-ink text-foam">
-      <Exploded />
-
-      <div className="mx-auto max-w-[96rem] px-5 pb-20 sm:px-8 sm:pb-28 lg:px-12 lg:pb-36">
-        <div id="faq" className="grid scroll-mt-8 gap-10 border-t border-foam/12 pt-12 sm:pt-16 lg:grid-cols-12 lg:gap-x-12">
+    <section id="faq" aria-labelledby="faq-title" className="relative scroll-mt-8 bg-ink text-foam">
+      <div className="mx-auto max-w-[96rem] px-5 py-20 sm:px-8 sm:py-28 lg:px-12 lg:py-36">
+        <div className="grid gap-10 lg:grid-cols-12 lg:gap-x-12">
           <div className="grid content-start gap-5 lg:col-span-4 lg:sticky lg:top-12 lg:self-start">
             <p className="font-mono text-[11px] tracking-[0.18em] text-mist uppercase">{t.label}</p>
-            <h3 className="text-[clamp(1.7rem,4vw,3rem)] leading-[1.02] font-light tracking-[-0.045em]">
+            <h2 id="faq-title" className={H2}>
               <EmTitle title={t.title} />
-            </h3>
+            </h2>
             <p className="max-w-[32ch] text-[15px] leading-snug text-foam/60">
               {t.more.before}{" "}
-              <a href="#start" className="text-foam underline decoration-foam/30 underline-offset-4 transition-colors hover:decoration-foam">
+              <a href={`mailto:${CONTACT_EMAIL}`} className="text-foam underline decoration-foam/30 underline-offset-4 transition-colors hover:decoration-foam">
                 {t.more.link}
               </a>
             </p>
