@@ -9,9 +9,8 @@
 export const home = {
   nav: {
     links: [
-      { href: "/#process", label: "Kako poteka" },
       { href: "/#pricing", label: "Cenik" },
-      { href: "/vec", label: "Več" },
+      { href: "/vec", label: "Pogosta vprašanja" },
     ],
     pill: "Dodaj geslo",
   },
@@ -32,7 +31,7 @@ export const home = {
   whatWeDo: {
     title: { lang: "sl", text: "Prvi vtis je pomemben" },
     /** PLACEHOLDER: subheadline to come from the collaborator. */
-    sub: "Lahko privabi nove stranke ali jih odžene. Kak vtis pusti vaša trenutna stran?",
+    sub: "Lahko privabi nove stranke ali jih odžene. Kak vtis daje vaša stran?",
   },
   
   howItWorks: {
@@ -53,12 +52,12 @@ export const home = {
       {
         title: "Odločite se",
         meta: "Če ne ustreza",
-        body: "Če stran ne izpolni vaših pričakovanj, jo lahko sami izbrišete. Brez obveznosti in dodatnih vprašanj. Rezervacija 20 € se na vašo zahtevo sprosti.",
+        body: "Če stran ne izpolni pričakovanj, jo lahko sami izbrišete. Brez obveznosti in dodatnih vprašanj. Rezervacija 20 € se na vašo zahtevo sprosti.",
       },
       {
         title: "Dokončamo",
         meta: "Stran bo dokončana v treh dneh",
-        body: "Če vam je stran všeč, nadaljujemo. Upoštevamo vaše dopolnitve in spremembe, lahko se dogovorimo tudi za dodatke, npr. več strani, avtomatizacija, SEO, trgovina in drugo.",
+        body: "Če vam je stran všeč, nadaljujemo. Upoštevamo vaše dopolnitve in spremembe, lahko se dogovorimo za dodatke, več strani, SEO, trgovino in drugo.",
       },
     ],
   },
@@ -241,13 +240,12 @@ export const home = {
 
   footer: {
     links: [
-      { href: "/#process", label: "Kako poteka" },
       { href: "/#pricing", label: "Cenik" },
       { href: "/vec", label: "Pogosta vprašanja" },
       { href: "/splosni-pogoji", label: "Splošni pogoji" },
       { href: "/politika-zasebnosti", label: "Politika zasebnosti" },
       { href: "/piskotki", label: "Piškotki" },
     ],
-    copyright: "© 2026 Spletne.com",
+    copyright: "Splošni pogoji | Politika zasebnosti | Piškotki",
   },
 } as const;
