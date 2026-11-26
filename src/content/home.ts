@@ -21,19 +21,20 @@ export const home = {
     title: { before: "Kaj pravite o novi spletni strani?" },
     /** One entry per line. */
     aside: ["Najprej jo izdelamo.", "Plačate šele, če vam je všeč."],
-    cta: "Preizkusite",
+    cta: "Oddaj povpraševanje",
     scroll: "Nižje",
   },
 
   whatWeDo: {
     title: { lang: "sl", text: "Prvi vtis je pomemben" },
     /** PLACEHOLDER: subheadline to come from the collaborator. */
-    sub: "Lahko privabi nove stranke ali jih odžene. Kako je pri vas?",
+    sub: "Lahko privabi nove stranke ali jih odžene. Kak vtis daje vaša strani?",
   },
   
   howItWorks: {
     label: "Štirje koraki",
     title: { before: "Naročite šele, ko boste zadovoljni." },
+    scroll: "Nižje",
     stepWord: "Korak",
     steps: [
       {
