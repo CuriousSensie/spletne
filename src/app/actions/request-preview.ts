@@ -47,7 +47,7 @@ type Lead = {
   files: { filename: string; content: Buffer }[];
 };
 
-/** Emails the lead to LEAD_INBOX over SMTP. Without mail config: logs in development, fails loudly in production. */
+/** Emails the lead to LEAD_INBOX via Resend. Without mail config: logs in development, fails loudly in production. */
 async function deliverLead(lead: Lead): Promise<void> {
   const missing = missingMailEnv();
   if (missing.length) {
