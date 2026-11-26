@@ -18,7 +18,7 @@ export const home = {
 
   hero: {
     lang: "sl",
-    title: { before: "Kaj pravite o eenovi spletni strani?" },
+    title: { before: "Kaj pravite o novi spletni strani?" },
     /** One entry per line. */
     aside: ["Najprej jo izdelamo.", "Plačate šele, če vam je všeč."],
     cta: "Preizkusite",
@@ -26,35 +26,35 @@ export const home = {
   },
 
   whatWeDo: {
-    title: { lang: "sl", text: "Vaša spletna stran je vaš prvi stik" },
+    title: { lang: "sl", text: "Prvi vtis je pomemben" },
     /** PLACEHOLDER: subheadline to come from the collaborator. */
-    sub: "Lahko prinese nove stranke ali pa jih odžene h konkurenci. Kako je pri vas?",
+    sub: "Lahko privabi nove stranke ali jih odžene. Kako je pri vas?",
   },
   
   howItWorks: {
-    label: "Kako poteka",
-    title: { before: "Štirje koraki. Naročite šele, ko boste zadovoljni." },
+    label: "Štirje koraki",
+    title: { before: "Naročite šele, ko boste zadovoljni." },
     stepWord: "Korak",
     steps: [
       {
         title: "Pošljete",
-        meta: "20 € rezervacije",
-        body: "Pošljete naslov svoje strani (ali predstavite podjetje, če strani še nimate). Lahko dodate tudi okvirne želje glede vsebine, dizajna, dinamike. Dodali boste 20 € rezervacije, ki jo v celoti in brez vprašanj vrnemo, če dizajn ne bo ustrezal vašim pričakovanjem.",
+        meta: "Orišite pričakovanja",
+        body: "Pošljete naslov svoje strani (ali predstavite podjetje, če strani še nimate). Dodate lahko tudi želje glede videza in vsebine. Rezervacija 20 € potrdi povpraševanje",
       },
       {
         title: "Izdelamo",
         meta: "Predogled bo viden samo vam",
-        body: "Stran bomo analizirali, poiskali najbolj optimalne rešitve in jo v naslednjih 24 urah izdelali. Skrita bo pred javnostjo in vidna samo z geslom, ki vam ga pošljemo.",
+        body: "Stran analiziramo, poiščemo najboljše rešitve in jo izdelamo v 24 urah. Skrita bo pred javnostjo in vidna samo z geslom, ki vam ga pošljemo.",
       },
       {
         title: "Odločite se",
         meta: "Če ne ustreza",
-        body: "Če spletna stran ne odgovarja vašim pričakovanjem, jo lahko enostavno z enim klikom stran sami izbrišete. Brez obveznosti, brez vprašanj, rezervacija pa bo povrnjena po vaši zahtevi.",
+        body: "Če stran ne ustreza vašim pričakovanjem, jo lahko z enim klikom sami izbrišete. Brez obveznosti in brez vprašanj, rezervacija pa bo povrnjena po vaši zahtevi.",
       },
       {
         title: "Dokončamo",
         meta: "Stran bo izdelana v treh dneh",
-        body: "Če stran ustreza vašim pričakovanjem, potem nadaljujemo. Prisluhnili bomo vašim dopolnitvam, spremembam; lahko se dogovorimo tudi za morebitne dodatke, npr. več strani ali blokov, email avtomatizacijo, SEO optimizacijo, trgovino in drugo. V tem primeru izdelavo strani naročite in dokončana bo v treh dneh.",
+        body: "Če vam je stran všeč, nadaljujemo. Upoštevamo vaše dopolnitve in spremembe, po želji pa se dogovorimo tudi za dodatke, kot so več strani ali blokov, e-poštna avtomatizacija, SEO, trgovina in drugo. Ko izdelavo naročite, je stran dokončana v treh dneh.",
       },
     ],
   },
@@ -63,8 +63,8 @@ export const home = {
     label: "Predogled vaše nove strani",
     title: { before: "Zasebni ogled" },
     body: [
-      "Ko naslovno stran dokončamo (korak 02), vam bomo poslali geslo. Vnesli ga boste na desni strani in stran bo vidna samo vam.",
-      "Predogled ne pomeni, da je stran dokončana in da povezave delujejo, bo pa dovolj, da dobite vpogled v predviden dizajn, vašo predstavitev, videz na telefonu, morda pa dobite še kakšno idejo za dopolnitev.",
+      "Ko izdelamo predogled, vam pošljemo osebno geslo. Stran ni javno dostopna in si jo lahko ogledate samo vi.",
+      "Predogled prikazuje zasnovo, vsebino in videz strani na različnih napravah. Stran še ni dokončana, zato nekatere povezave in funkcionalnosti še ne bodo delovale.",
     ],
     primary: { label: "Povezava do obstoječe strani", href: "#start" },
     secondary: { label: "Kako deluje", href: "#process" },
@@ -75,7 +75,7 @@ export const home = {
       inputLabel: "Vnos gesla",
       button: "Prikaži stran",
       checking: "Preverjam…",
-      note: "Op. Geslo včasih konča v mapi z neželeno pošto. Preverite tudi to, če gesla niste prejeli.",
+      note: "Če e-pošte ne najdete, preverite mapo z neželeno pošto.",
     },
     errors: {
       format: "Geslo je sestavljeno iz 6 črk ali številk. Preverite email, ki smo vam ga poslali.",
@@ -88,26 +88,26 @@ export const home = {
   pricing: {
     label: "Cenik",
     title: { before: "Brezplačno. Razen če vas navdušimo." },
-    sub: "Dokončno ceno oblikujemo šele v zadnjem koraku, ko predviden dizajn že potrdite in dodate morebitne nadgradnje.",
+    sub: "Predogled je brezplačen. Če vam ustreza, nadaljujemo za 249 €.",
     prices: [
       { amount: 0, label: "Če vas ne prepričamo", note: "20 € rezervacije bo povrnjenih." },
-      { amount: 249, label: "Če jo želite dokončati", note: "Moderna predstavitev na eni strani" },
+      { amount: 249, label: "Če naj dokončamo", note: "Moderna enostranska predstavitev." },
     ],
-    cta: "Dodaj povezavo do svoje strani",
+    cta: "Povezava do vaše strani",
     includesLabel: "Kaj je vključeno",
     includes: [
       { title: "Moderna predstavitev na eni strani", text: "Do šest sekcij/blokov." },
       { title: "Povezava s socialnimi omrežji", text: "Vse povezave do vaših socialnih omrežij in drugih spletnih strani." },
-      { title: "Kontaktni obrazec ali gumb za klic", text: "Stranke vas lahko pokličejo ali pišejo z enim dotikom." },
-      { title: "Piškotki in obvezne pravne strani", text: "Podatki o ponudniku, politika zasebnosti in obvestilo o piškotkih, prilagojeni vaši strani." },
+      { title: "Kontaktni obrazec in gumb za klic", text: "Stranke vas lahko pokličejo ali pišejo z enim dotikom." },
+      { title: "Drobni tisk", text: "Politika zasebnosti, obvestilo o piškotkih in podatki o ponudniku." },
       { title: "Optimizacija slik", text: "Optimizacija in hitro nalaganje strani." },      
-      { title: "Osnovni SEO", text: "Da vas Google najde in pokaže v iskalnikih." },
+      { title: "Osnovni SEO", text: "Optimizacija za boljšo vidnost v Googlu in drugih iskalnikih." },
       { title: "Mobilna verzija vaše strani", text: "Večina vaših strank prihaja do vas preko telefonov, zato je to prioriteta." },
-      { title: "Dopolnila in spremembe", text: "Včasih šele po ogledu skupaj ugotovimo, da bi bila dobrodošla kakšna manjša sprememba." },
+      { title: "Dopolnila in spremembe", text: "Manjše prilagoditve po pregledu predogleda." },
       { title: "Izdelava v treh dneh", text: "Potrudili se bomo, da je vaša stran pravočasno izdelana." },
       { title: "Namestitev na vašo domeno", text: "Stran namestimo na vašo domeno in poskrbimo, da vse deluje." },
     ],
-    extras: "Rabite več strani, nadstandardno optimizacijo SEO, trgovino, plačila, avtomatizacije? Pogovorimo se in našli bomo rešitve.",
+    extras: "Rabite več strani, nadstandardno optimizacijo SEO, trgovino, sprejemanje plačil, avtomatizacije? Pogovorimo se in našli bomo rešitve.",
   },
 
   whatYouGet: {
@@ -134,15 +134,15 @@ export const home = {
       },      
       {
         q: "Zakaj je potrebna rezervacija 20 €?",
-        a: "Brezplačno delamo do trenutka, ko vas navdušimo. Rezervacija potrdi, da je vaše povpraševanje resno, nas pa vsaj delno obvaruje pred zlorabami. Brez tega ponudba ne bi bila tako ugodna. ",
+        a: "Brezplačno delamo do trenutka, ko vas navdušimo. Rezervacija potrdi, da je vaše povpraševanje resno, nas pa delno obvaruje pred zlorabami. Brez tega ponudba ne bi bila tako ugodna. ",
       },      
       {
         q: "Kako poteka rezervacija?",
-        a: "Plačila obdelujemo prek Stripe, enega največjih ponudnikov spletnih plačil. Stripe na vaši kartici rezervira 20 €; denar tako ostane na vašem računu. Če se ne odločite za nadaljevanje, se rezervacija sprosti in na vašem računu odblokira v nekaj dneh, odvisno od banke. Če stran obdržite, se 20 € všteje v ceno.",
+        a: "Plačilo obdelamo prek Stripe, ki na vaši kartici rezervira 20 €, ne da bi jih dejansko odtegnil. Če se ne odločite za nadaljevanje, se rezervacija sprosti v nekaj dneh, odvisno od banke. Če stran naročite, se 20 € všteje v končno ceno.",
       },      
       {
         q: "Ali vzamete vsako povpraševanje v delo?",
-        a: "Nikakor ne. To ne bi bilo mogoče časovno, niti ne bi bilo ekonomsko upravičeno. Med povpraševanji izberemo tiste, za katere verjamemo, da je interes pristen in kjer ugotovimo, da bi modernizacija lahko bila koristna za naročnika.",
+        a: "Ne. Izbiramo povpraševanja, pri katerih prepoznamo resnično potrebo po izboljšavi spletne predstavitve in možnost, da lahko z našim delom podjetju koristimo.",
       },
       {
         q: "Kaj če s predlaganim dizajnom ne bomo zadovoljni?",
@@ -185,7 +185,7 @@ export const home = {
         link: "Politika zasebnosti",
         href: "/sl/zasebnost",
       },
-      due: "Cena: 0 €",
+      due: "Spletna stran je vaša spletna vizitka. Pomembna je.",
       okEyebrow: "Povpraševanje oddano",
       ok: { before: "Prejeli smo povpraševanje. Odgovorili bomo ", after: " predvidoma v enem dnevu." },
       errors: {
