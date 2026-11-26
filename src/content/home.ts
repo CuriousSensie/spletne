@@ -18,7 +18,7 @@ export const home = {
 
   hero: {
     lang: "sl",
-    title: { before: "Kaj pravite o novi spletni strani?" },
+    title: { before: "Ste za novo spletno stran?" },
     /** One entry per line. */
     aside: ["Najprej jo izdelamo.", "Plačate šele, če vam je všeč."],
     cta: "Oddaj povpraševanje",
@@ -32,7 +32,7 @@ export const home = {
   whatWeDo: {
     title: { lang: "sl", text: "Prvi vtis je pomemben" },
     /** PLACEHOLDER: subheadline to come from the collaborator. */
-    sub: "Lahko privabi nove stranke ali jih odžene. Kak vtis daje vaša strani?",
+    sub: "Lahko privabi nove stranke ali jih odžene. Kak vtis pusti vaša trenutna stran?",
   },
   
   howItWorks: {
@@ -53,22 +53,22 @@ export const home = {
       {
         title: "Odločite se",
         meta: "Če ne ustreza",
-        body: "Če stran ne ustreza vašim pričakovanjem, jo lahko z enim klikom sami izbrišete. Brez obveznosti in brez vprašanj, rezervacija pa bo povrnjena po vaši zahtevi.",
+        body: "Če stran ne izpolni vaših pričakovanj, jo lahko sami izbrišete. Brez obveznosti in dodatnih vprašanj. Rezervacija 20 € se na vašo zahtevo sprosti.",
       },
       {
         title: "Dokončamo",
-        meta: "Stran bo izdelana v treh dneh",
-        body: "Če vam je stran všeč, nadaljujemo. Upoštevamo vaše dopolnitve in spremembe, po želji pa se dogovorimo tudi za dodatke, kot so več strani ali blokov, e-poštna avtomatizacija, SEO, trgovina in drugo. Ko izdelavo naročite, je stran dokončana v treh dneh.",
+        meta: "Stran bo dokončana v treh dneh",
+        body: "Če vam je stran všeč, nadaljujemo. Upoštevamo vaše dopolnitve in spremembe, lahko se dogovorimo tudi za dodatke, npr. več strani, avtomatizacija, SEO, trgovina in drugo.",
       },
     ],
   },
 
   previewAccess: {
-    label: "Predogled vaše nove strani",
+    label: "Osnutek vaše nove strani",
     title: { before: "Zasebni ogled" },
     body: [
       "Ko izdelamo predogled, vam pošljemo osebno geslo. Stran ni javno dostopna in si jo lahko ogledate samo vi.",
-      "Predogled prikazuje zasnovo, vsebino in videz strani na različnih napravah. Stran še ni dokončana, zato nekatere povezave in funkcionalnosti še ne bodo delovale.",
+      "Osnutek prikazuje zasnovo, vsebino in videz strani na različnih napravah. Stran še ni dokončana, zato nekatere povezave in funkcionalnosti še ne bodo delovale.",
     ],
     card: {
       eyebrow: "Zasebni ogled",
@@ -90,12 +90,12 @@ export const home = {
   pricing: {
     label: "Cenik",
     title: { before: "Brezplačno. Razen če vas navdušimo." },
-    sub: "Predogled je brezplačen. Če vam ustreza, nadaljujemo za 249 €.",
+    sub: "Najprej ustvarimo osnovno različico. Dovolj, da vidite potencial in se odločite.",
     prices: [
       { amount: 0, label: "Če vas ne prepričamo", note: "20 € rezervacije bo povrnjenih." },
       { amount: 249, label: "Če naj dokončamo", note: "Moderna enostranska predstavitev." },
     ],
-    cta: "Povezava do vaše strani",
+    cta: "Povpraševanje",
     includesLabel: "Kaj je vključeno",
     includes: [
       { title: "Moderna predstavitev na eni strani", text: "Do šest sekcij/blokov." },
@@ -175,7 +175,7 @@ export const home = {
 
   start: {
     label: "Začnimo",
-    title: { before: "Vaša nova stran; prvi korak." },
+    title: { before: "Pošljite podatke, da pripravimo načrt" },
     body: "Pošljite nam povezavo do obstoječe strani ali opišite svoje želje. Običajno odgovorimo v roku 24 ur z že pripravljenim okvirom načrta.",
     /** The short form in the section: two fields, then the full inquiry opens. */
     teaser: { next: "Nadaljuj", due: "Spletna stran je vaša spletna vizitka. Pomembna je." },
@@ -187,7 +187,7 @@ export const home = {
     cta: {
       label: "Začnimo",
       title: { before: "Poglejmo, kako bi izgledala vaša nova stran." },
-      body: "Pošljite nam povezavo do obstoječe strani ali opišite svoje želje. Predogled je brezplačen.",
+      body: "Pošljite nam povezavo do obstoječe strani ali opišite svoje želje. Osnutek je brezplačen.",
       button: "Pošljite povpraševanje",
     },
   },
@@ -243,9 +243,9 @@ export const home = {
     links: [
       { href: "/#process", label: "Kako poteka" },
       { href: "/#pricing", label: "Cenik" },
-      { href: "/vec", label: "Več" },
-      { href: "/pogoji", label: "Pogoji" },
-      { href: "/zasebnost", label: "Zasebnost" },
+      { href: "/vec", label: "Pogosta vprašanja" },
+      { href: "/splosni-pogoji", label: "Splošni pogoji" },
+      { href: "/politika-zasebnosti", label: "Politika zasebnosti" },
       { href: "/piskotki", label: "Piškotki" },
     ],
     copyright: "© 2026 Spletne.com",
