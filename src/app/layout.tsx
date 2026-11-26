@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { preload } from "react-dom";
+import { InquiryProvider } from "@/components/site/inquiry-context";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -23,7 +24,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   preload("/fonts/instrument-serif-latin-ext-400-italic.woff2", { as: "font", type: "font/woff2", crossOrigin: "anonymous" });
   return (
     <html lang="sl" className="antialiased">
-      <body className="font-sans">{children}</body>
+      <body className="font-sans">
+        <InquiryProvider>{children}</InquiryProvider>
+      </body>
     </html>
   );
 }

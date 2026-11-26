@@ -1,9 +1,12 @@
+import Link from "next/link";
 import { ShaderCanvas } from "@/components/shaders/shader-canvas";
 import { STREAKS } from "@/components/shaders/library";
 import { PALETTES } from "@/components/shaders/palettes";
 import { home } from "@/content/home";
 import { Wordmark } from "./wordmark";
 import { EmTitle } from "./em-title";
+import { InquiryTrigger } from "./inquiry-context";
+import { ScrollCue } from "./scroll-cue";
 
 const t = home.hero;
 
@@ -22,11 +25,18 @@ export function Hero() {
       <header className="mx-auto flex w-full max-w-[96rem] items-center justify-between px-5 pt-5 sm:px-8 sm:pt-7 lg:px-12">
         <Wordmark />
         <nav aria-label="Glavni meni" className="hidden items-center gap-8 font-mono text-[11px] tracking-[0.14em] text-foam/70 uppercase md:flex">
-          {home.nav.links.map((n) => (
-            <a key={n.href} href={n.href} className="transition-colors hover:text-foam">
-              {n.label}
-            </a>
-          ))}
+          {home.nav.links.map((n) =>
+            n.href.startsWith("/#") ? (
+              // Plain anchor so Lenis animates the scroll.
+              <a key={n.href} href={n.href} className="transition-colors hover:text-foam">
+                {n.label}
+              </a>
+            ) : (
+              <Link key={n.href} href={n.href} className="transition-colors hover:text-foam">
+                {n.label}
+              </Link>
+            ),
+          )}
         </nav>
         <a
           href="#preview"
@@ -45,8 +55,7 @@ export function Hero() {
           >
             <EmTitle title={t.title} emClassName="font-serif font-normal tracking-[-0.02em]" />
           </h1>
-          <a
-            href="#start"
+          <InquiryTrigger
             className="rise-in group mt-8 inline-flex h-12 items-center gap-3 rounded-full bg-foam pr-2 pl-5 text-sm font-medium text-ink transition-transform [animation-delay:380ms] active:scale-[0.98] sm:mt-10"
           >
             {t.cta}
@@ -55,7 +64,7 @@ export function Hero() {
                 <path d="M3 8h10M9 4l4 4-4 4" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </span>
-          </a>
+          </InquiryTrigger>
         </div>
 
         {/* Slanted subheading over its own reflection. */}
@@ -82,13 +91,8 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="mx-auto flex w-full max-w-[96rem] items-center justify-between px-5 pb-6 font-mono text-[11px] tracking-[0.14em] text-foam/55 uppercase sm:px-8 sm:pb-8 lg:px-12">
-        <a href="#what-we-do" className="flex items-center gap-3 hover:text-foam" aria-label="Pomaknite se navzdol">
-          <span className="relative block h-9 w-px overflow-hidden bg-foam/15">
-            <span className="scroll-cue absolute inset-0 bg-foam" />
-          </span>
-          <span className="hidden sm:inline">{t.scroll}</span>
-        </a>
+      <div className="mx-auto flex w-full max-w-[96rem] items-center justify-between px-5 pb-6 sm:px-8 sm:pb-8 lg:px-12">
+        <ScrollCue href="#what-we-do" label={home.common.scroll} className="text-foam/55 hover:text-foam" />
       </div>
     </section>
   );

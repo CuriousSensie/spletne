@@ -102,6 +102,10 @@
 * {
   box-sizing: border-box;
 }
+/* No page scrolling behind the inquiry popup. */
+html:has(dialog[open]) {
+  overflow: hidden;
+}
 html {
   background: var(--midnight-navy);
   scrollbar-color: rgb(7 23 42 / 0.35) transparent;

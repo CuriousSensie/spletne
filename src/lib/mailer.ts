@@ -46,8 +46,14 @@ export function mailConfig(): MailConfig {
   return { from: process.env.LEAD_FROM as string, inbox: process.env.LEAD_INBOX as string };
 }
 
-/** Sends one plain-text email. Throws on any SMTP failure so callers can report it. */
-export async function sendMail(msg: { to: string; subject: string; text: string; replyTo?: string }): Promise<void> {
+/** Sends one plain-text email, optionally with attachments. Throws on any SMTP failure so callers can report it. */
+export async function sendMail(msg: {
+  to: string;
+  subject: string;
+  text: string;
+  replyTo?: string;
+  attachments?: { filename: string; content: Buffer }[];
+}): Promise<void> {
   const { from } = mailConfig();
   const info = await transporter().sendMail({ from, ...msg });
   if (info.rejected.length) throw new Error(`SMTP rejected: ${info.rejected.join(", ")}`);

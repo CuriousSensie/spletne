@@ -4,6 +4,7 @@ import { useActionState, useRef, useState } from "react";
 import { openPreview, type OpenPreviewState } from "@/app/actions/open-preview";
 import { home } from "@/content/home";
 import { EmTitle } from "./em-title";
+import { H2 } from "./styles";
 
 const t = home.previewAccess;
 const LENGTH = 6;
@@ -68,7 +69,7 @@ export function PreviewAccess() {
       <div className="mx-auto grid max-w-[96rem] gap-12 px-5 py-20 sm:px-8 sm:py-28 lg:py-36 lg:grid-cols-12 lg:gap-x-16 lg:px-12">
         <div className="grid content-center gap-6 lg:col-span-6">
           <p className="font-mono text-[11px] tracking-[0.18em] text-mist uppercase">{t.label}</p>
-          <h2 id="preview-title" className="max-w-[13ch] text-[clamp(2rem,5.6vw,4.4rem)] leading-[1.0] font-light tracking-[-0.05em]">
+          <h2 id="preview-title" className={H2}>
             <EmTitle title={t.title} />
           </h2>
           {t.body.map((p) => (
@@ -76,22 +77,6 @@ export function PreviewAccess() {
               {p}
             </p>
           ))}
-          <div className="mt-2 flex flex-wrap gap-3">
-            <a
-              href={t.primary.href}
-              className="group inline-flex h-12 items-center gap-3 rounded-full bg-foam pr-2 pl-5 text-sm font-medium text-ink transition-transform active:scale-[0.98]"
-            >
-              {t.primary.label}
-              <span className="grid size-8 place-items-center rounded-full bg-ink text-foam transition-transform duration-300 group-hover:translate-x-0.5">
-                <svg aria-hidden="true" className="size-3.5" fill="none" stroke="currentColor" strokeWidth={1.6} viewBox="0 0 16 16">
-                  <path d="M3 8h10M9 4l4 4-4 4" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </span>
-            </a>
-            <a href={t.secondary.href} className="inline-flex h-12 items-center rounded-full px-5 text-sm font-medium ring-1 ring-foam/25 transition-colors hover:ring-foam/60">
-              {t.secondary.label}
-            </a>
-          </div>
         </div>
 
         <div className="lg:col-span-6 lg:col-start-7">

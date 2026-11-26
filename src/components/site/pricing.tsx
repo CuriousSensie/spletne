@@ -6,6 +6,7 @@ import { PALETTES } from "@/components/shaders/palettes";
 import { home } from "@/content/home";
 import { useCountUp, useInViewOnce } from "./hooks";
 import { EmTitle } from "./em-title";
+import { InquiryTrigger } from "./inquiry-context";
 
 const t = home.pricing;
 const euro = (n: number): string => new Intl.NumberFormat("sl-SI", { maximumFractionDigits: 0 }).format(Math.round(n));
@@ -60,8 +61,7 @@ export function Pricing() {
             ))}
           </div>
 
-          <a
-            href="#start"
+          <InquiryTrigger
             className="group mt-2 inline-flex h-12 items-center justify-between gap-3 self-start justify-self-start rounded-full bg-ink pr-2 pl-5 text-sm font-medium text-foam transition-transform active:scale-[0.98]"
           >
             {t.cta}
@@ -70,7 +70,7 @@ export function Pricing() {
                 <path d="M3 8h10M9 4l4 4-4 4" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </span>
-          </a>
+          </InquiryTrigger>
         </div>
 
         <div className="lg:col-span-7">

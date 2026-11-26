@@ -9,9 +9,9 @@
 export const home = {
   nav: {
     links: [
-      { href: "#process", label: "Kako poteka" },
-      { href: "#pricing", label: "Cenik" },
-      { href: "#faq", label: "FAQ" },
+      { href: "/#process", label: "Kako poteka" },
+      { href: "/#pricing", label: "Cenik" },
+      { href: "/vec", label: "Več" },
     ],
     pill: "Dodaj geslo",
   },
@@ -22,6 +22,10 @@ export const home = {
     /** One entry per line. */
     aside: ["Najprej jo izdelamo.", "Plačate šele, če vam je všeč."],
     cta: "Oddaj povpraševanje",
+  },
+
+  /** Shared bits used by more than one section. */
+  common: {
     scroll: "Nižje",
   },
 
@@ -66,8 +70,6 @@ export const home = {
       "Ko izdelamo predogled, vam pošljemo osebno geslo. Stran ni javno dostopna in si jo lahko ogledate samo vi.",
       "Predogled prikazuje zasnovo, vsebino in videz strani na različnih napravah. Stran še ni dokončana, zato nekatere povezave in funkcionalnosti še ne bodo delovale.",
     ],
-    primary: { label: "Povezava do obstoječe strani", href: "#start" },
-    secondary: { label: "Kako deluje", href: "#process" },
     card: {
       eyebrow: "Zasebni ogled",
       title: "Vnesi geslo",
@@ -175,32 +177,76 @@ export const home = {
     label: "Začnimo",
     title: { before: "Vaša nova stran; prvi korak." },
     body: "Pošljite nam povezavo do obstoječe strani ali opišite svoje želje. Običajno odgovorimo v roku 24 ur z že pripravljenim okvirom načrta.",
-    form: {
-      site: { label: "Trenutna stran", placeholder: "našastran.si" },
+    /** The short form in the section: two fields, then the full inquiry opens. */
+    teaser: { next: "Nadaljuj", due: "Spletna stran je vaša spletna vizitka. Pomembna je." },
+  },
+
+  /** Inner page (/vec): header link and closing call to action. */
+  more: {
+    back: "Domov",
+    cta: {
+      label: "Začnimo",
+      title: { before: "Poglejmo, kako bi izgledala vaša nova stran." },
+      body: "Pošljite nam povezavo do obstoječe strani ali opišite svoje želje. Predogled je brezplačen.",
+      button: "Pošljite povpraševanje",
+    },
+  },
+
+  /** The inquiry popup. */
+  inquiry: {
+    title: "Predstavite svojo spletno stran",
+    intro: "Izpolnite spodnje podatke in nam povejte nekaj več o svojem projektu.",
+    close: "Zapri",
+    fields: {
+      site: { label: "Trenutna stran ali ime podjetja", placeholder: "našastran.si" },
       email: { label: "Vaš e-naslov", placeholder: "podjetje@podjetje.si" },
-      submit: "Pošlji",
-      sending: "Pošiljam…",
-      consent: {
-        before: "Z oddajo se strinjate z obdelavo vašega e-naslova za odgovor na povpraševanje. ",
-        link: "Politika zasebnosti",
-        href: "/sl/zasebnost",
+      phone: { label: "Telefon", optional: "neobvezno", placeholder: "+386 40 123 456" },
+      details: {
+        label: "Podrobnosti",
+        placeholder: "Opišite svoje podjetje, kaj ponujate in kaj bi želeli doseči z novo stranjo …",
+        count: (n: number, min: number) => `${n} / ${min} besed`,
       },
-      due: "Spletna stran je vaša spletna vizitka. Pomembna je.",
-      okEyebrow: "Povpraševanje oddano",
-      ok: { before: "Prejeli smo povpraševanje. Odgovorili bomo ", after: " predvidoma v enem dnevu." },
-      errors: {
-        site: "Vnesi naslov spletne strani ali ime podjetja.",
-        email: "Vnesite veljaven e-naslov.",
-        server: "Prišlo je do napake. Poskusi znova čez nekaj minut.",
+      files: {
+        label: "Priponke",
+        optional: "neobvezno",
+        hint: "Logotip, slike, karkoli, kar bi želeli dodati. Do 5 datotek, skupaj 10 MB.",
+        drop: "Povlecite datoteke sem ali ",
+        browse: "izberite",
+        remove: "Odstrani",
       },
+    },
+    submit: "Pošlji",
+    sending: "Pošiljam…",
+    due: "Spletna stran je vaša spletna vizitka. Pomembna je.",
+    consent: {
+      before: "Z oddajo se strinjate z obdelavo vaših podatkov za odgovor na povpraševanje. ",
+      link: "Politika zasebnosti",
+      href: "/zasebnost",
+    },
+    okEyebrow: "Povpraševanje oddano",
+    ok: { before: "Prejeli smo povpraševanje. Odgovorili bomo ", after: " predvidoma v enem dnevu." },
+    errors: {
+      site: "Vnesite naslov spletne strani ali ime podjetja.",
+      email: "Vnesite veljaven e-naslov.",
+      phone: "Vnesite veljavno telefonsko številko ali pustite polje prazno.",
+      details: `Opišite projekt z vsaj 20 besedami.`,
+      detailsLong: "Opis je predolg. Skrajšajte ga na največ 5000 znakov.",
+      filesCount: "Največ 5 datotek.",
+      filesSize: "Posamezna datoteka je lahko velika največ 5 MB.",
+      filesTotal: "Priponke skupaj ne smejo presegati 10 MB.",
+      filesType: "Dovoljene so slike (PNG, JPG, WebP, GIF, SVG), PDF in Word.",
+      server: "Prišlo je do napake. Poskusite znova čez nekaj minut.",
     },
   },
 
   footer: {
     links: [
-      { href: "#process", label: "Kako poteka" },
-      { href: "#pricing", label: "Cenik" },
-      { href: "#faq", label: "FAQ" },
+      { href: "/#process", label: "Kako poteka" },
+      { href: "/#pricing", label: "Cenik" },
+      { href: "/vec", label: "Več" },
+      { href: "/pogoji", label: "Pogoji" },
+      { href: "/zasebnost", label: "Zasebnost" },
+      { href: "/piskotki", label: "Piškotki" },
     ],
     copyright: "© 2026 Spletne.com",
   },
