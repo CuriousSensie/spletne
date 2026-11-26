@@ -34,7 +34,6 @@ export const home = {
   howItWorks: {
     label: "Štirje koraki",
     title: { before: "Naročite šele, ko boste zadovoljni." },
-    scroll: "Nižje",
     stepWord: "Korak",
     steps: [
       {
@@ -174,7 +173,7 @@ export const home = {
 
   start: {
     label: "Začnimo",
-    title: { before: "En klik do nove strani." },
+    title: { before: "Vaša nova stran; prvi korak." },
     body: "Pošljite nam povezavo do obstoječe strani ali opišite svoje želje. Običajno odgovorimo v roku 24 ur z že pripravljenim okvirom načrta.",
     form: {
       site: { label: "Trenutna stran", placeholder: "našastran.si" },
