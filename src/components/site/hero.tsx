@@ -5,7 +5,6 @@ import { PALETTES } from "@/components/shaders/palettes";
 import { home } from "@/content/home";
 import { Wordmark } from "./wordmark";
 import { EmTitle } from "./em-title";
-import { InquiryTrigger } from "./inquiry-context";
 import { ScrollCue } from "./scroll-cue";
 
 const t = home.hero;
@@ -55,7 +54,8 @@ export function Hero() {
           >
             <EmTitle title={t.title} emClassName="font-serif font-normal tracking-[-0.02em]" />
           </h1>
-          <InquiryTrigger
+          <a
+            href="#start"
             className="rise-in group mt-8 inline-flex h-12 items-center gap-3 rounded-full bg-foam pr-2 pl-5 text-sm font-medium text-ink transition-transform [animation-delay:380ms] active:scale-[0.98] sm:mt-10"
           >
             {t.cta}
@@ -64,7 +64,7 @@ export function Hero() {
                 <path d="M3 8h10M9 4l4 4-4 4" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </span>
-          </InquiryTrigger>
+          </a>
         </div>
 
         {/* Slanted subheading over its own reflection. */}

@@ -1,6 +1,6 @@
+import Link from "next/link";
 import { home } from "@/content/home";
 import { EmTitle } from "./em-title";
-import { InquiryTrigger } from "./inquiry-context";
 import { H2 } from "./styles";
 
 const t = home.more.cta;
@@ -18,14 +18,14 @@ export function MoreCta() {
         </div>
         <div className="grid content-end gap-6 lg:col-span-5">
           <p className="max-w-[40ch] text-[16px] leading-snug text-foam/70 sm:text-[17px]">{t.body}</p>
-          <InquiryTrigger className="group inline-flex h-14 items-center justify-between gap-3 self-start justify-self-start rounded-full bg-foam pr-2 pl-6 text-[15px] font-medium text-ink transition-transform active:scale-[0.98]">
+          <Link href="/#start" className="group inline-flex h-14 items-center justify-between gap-3 self-start justify-self-start rounded-full bg-foam pr-2 pl-6 text-[15px] font-medium text-ink transition-transform active:scale-[0.98]">
             {t.button}
             <span className="grid size-10 place-items-center rounded-full bg-ink text-foam transition-transform duration-300 group-hover:translate-x-0.5">
               <svg aria-hidden="true" className="size-4" fill="none" stroke="currentColor" strokeWidth={1.6} viewBox="0 0 16 16">
                 <path d="M3 8h10M9 4l4 4-4 4" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </span>
-          </InquiryTrigger>
+          </Link>
         </div>
       </div>
     </section>
