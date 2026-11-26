@@ -184,9 +184,9 @@ export const home = {
     back: "Domov",
     cta: {
       label: "Začnimo",
-      title: { before: "Dizajn vaše nove strani vam pošljemo že jutri" },
-      body: "Vašo novo stran vam na vpogled pošljemo že jutri.",
-      button: "Nadaljujmo",
+      title: { before: "Prvi predogled vam pošljemo že jutri" },
+      body: "Stran si ogledate, podate pripombe in se odločite, ali nadaljujemo.",
+      button: "Poskusimo",
     },
   },
 
