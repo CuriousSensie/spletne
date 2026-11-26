@@ -13,13 +13,18 @@ const t = home.inquiry;
  */
 export function InquiryDialog({ open, prefill, onClose }: { open: boolean; prefill: InquiryPrefill; onClose: () => void }) {
   const ref = useRef<HTMLDialogElement>(null);
+  const focus = prefill.focus ?? "site";
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    if (open && !el.open) el.showModal();
+    if (open && !el.open) {
+      el.showModal();
+      // The browser would focus the close button; put the cursor where the visitor started typing.
+      el.querySelector<HTMLElement>(`[name="${focus}"]`)?.focus();
+    }
     if (!open && el.open) el.close();
-  }, [open]);
+  }, [open, focus]);
 
   return (
     <dialog

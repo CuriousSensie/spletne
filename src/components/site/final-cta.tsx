@@ -16,6 +16,18 @@ const f = home.inquiry.fields;
 export function FinalCta() {
   const { open } = useInquiry();
 
+  /** Starting to fill in either field opens the full inquiry, carrying over what is already there. */
+  function openFrom(input: HTMLInputElement): void {
+    const values = input.form ? new FormData(input.form) : new FormData();
+    // Blur first so focus returns to the page (not back into this field and into a loop) when the popup closes.
+    input.blur();
+    open({
+      site: String(values.get("site") ?? "").trim(),
+      email: String(values.get("email") ?? "").trim(),
+      focus: input.name === "email" ? "email" : "site",
+    });
+  }
+
   return (
     <section id="start" aria-labelledby="start-title" className="relative isolate flex min-h-svh flex-col overflow-hidden bg-ink text-foam">
       {/* Bookends the hero: same streaks, faded in from the section above. */}
@@ -40,8 +52,8 @@ export function FinalCta() {
             className="grid gap-3"
           >
             <div className="grid gap-3 sm:grid-cols-2">
-              <QuickField name="site" label={f.site.label} type="text" autoComplete="url" placeholder={f.site.placeholder} />
-              <QuickField name="email" label={f.email.label} type="email" autoComplete="email" placeholder={f.email.placeholder} />
+              <QuickField name="site" label={f.site.label} type="text" autoComplete="url" placeholder={f.site.placeholder} onStart={openFrom} />
+              <QuickField name="email" label={f.email.label} type="email" autoComplete="email" placeholder={f.email.placeholder} onStart={openFrom} />
             </div>
             <div className="mt-2 flex flex-col-reverse gap-4 sm:flex-row sm:items-center sm:justify-between">
               <p className="font-mono text-[11px] tracking-[0.14em] text-foam/45 uppercase">{t.teaser.due}</p>
@@ -66,11 +78,25 @@ export function FinalCta() {
   );
 }
 
-function QuickField({ name, label, type, autoComplete, placeholder }: { name: string; label: string; type: string; autoComplete: string; placeholder: string }) {
+function QuickField({
+  name,
+  label,
+  type,
+  autoComplete,
+  placeholder,
+  onStart,
+}: {
+  name: string;
+  label: string;
+  type: string;
+  autoComplete: string;
+  placeholder: string;
+  onStart: (input: HTMLInputElement) => void;
+}) {
   return (
     <label className="group grid gap-1 rounded-2xl bg-foam/[0.06] px-4 pt-3 pb-2.5 ring-1 ring-foam/12 transition-colors focus-within:bg-foam/[0.09] focus-within:ring-foam/40">
       <span className="font-mono text-[10px] tracking-[0.16em] text-mist/80 uppercase">{label}</span>
-      <input name={name} type={type} autoComplete={autoComplete} placeholder={placeholder} className="w-full bg-transparent text-[17px] text-foam outline-none placeholder:text-foam/30" />
+      <input name={name} type={type} autoComplete={autoComplete} placeholder={placeholder} onFocus={(e) => onStart(e.currentTarget)} className="w-full bg-transparent text-[17px] text-foam outline-none placeholder:text-foam/30" />
     </label>
   );
 }
