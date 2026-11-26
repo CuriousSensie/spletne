@@ -88,7 +88,7 @@ export const home = {
   pricing: {
     label: "Cenik",
     title: { before: "Brezplačno. Razen če vas navdušimo." },
-    sub: "Najprej ustvarimo osnovno različico. Dovolj, da vidite potencial in se odločite.",
+    sub: "Najprej ustvarimo osnutek vaše strani. Dovolj, da vidite potencial in se odločite.",
     prices: [
       { amount: 0, label: "Če vas ne prepričamo", note: "20 € rezervacije bo povrnjenih." },
       { amount: 249, label: "Če naj dokončamo", note: "Moderna enostranska predstavitev." },
@@ -184,9 +184,9 @@ export const home = {
     back: "Domov",
     cta: {
       label: "Začnimo",
-      title: { before: "Bi poskusili?" },
+      title: { before: "Dizajn vaše nove strani vam pošljemo že jutri" },
       body: "Vašo novo stran vam na vpogled pošljemo že jutri.",
-      button: "Poskusimo",
+      button: "Nadaljujmo",
     },
   },
 
