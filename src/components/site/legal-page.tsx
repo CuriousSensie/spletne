@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { home } from "@/content/home";
 import type { LegalBlock, LegalDoc } from "@/content/legal";
 import { PageHeader } from "./page-header";
 import { SiteFooter } from "./site-footer";
@@ -120,6 +122,17 @@ export function LegalPage({ doc }: { doc: LegalDoc }) {
             </section>
           ))}
         </div>
+
+        {/* The other legal documents, so the three pages read as one set. */}
+        <nav aria-label="Druga pravna obvestila" className="mt-16 flex flex-wrap gap-x-6 gap-y-2 border-t border-foam/12 pt-6 font-mono text-[11px] tracking-[0.14em] text-foam/55 uppercase">
+          {home.footer.legal
+            .filter((l) => l.href !== `/${doc.slug}`)
+            .map((l) => (
+              <Link key={l.href} href={l.href} className="transition-colors hover:text-foam">
+                {l.label}
+              </Link>
+            ))}
+        </nav>
       </article>
       <SiteFooter />
     </main>

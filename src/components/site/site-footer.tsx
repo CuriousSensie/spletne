@@ -24,11 +24,20 @@ export function SiteFooter() {
           )}
         </nav>
       </div>
-      <div className="mt-6 flex flex-col gap-2 font-mono text-[11px] tracking-[0.12em] text-foam/40 sm:flex-row sm:justify-between">
+      <div className="mt-6 flex flex-col gap-3 font-mono text-[11px] tracking-[0.12em] text-foam/40 sm:flex-row sm:items-center sm:justify-between">
         <a href={`mailto:${CONTACT_EMAIL}`} className="transition-colors hover:text-foam">
           {CONTACT_EMAIL}
         </a>
-        <p>{home.footer.copyright}</p>
+        <nav aria-label="Pravna obvestila" className="flex flex-wrap items-center gap-x-3 gap-y-1 sm:pr-14">
+          {home.footer.legal.map((l, i) => (
+            <span key={l.href} className="flex items-center gap-3">
+              {i > 0 ? <span aria-hidden="true" className="h-3 w-px bg-foam/25" /> : null}
+              <Link href={l.href} className="transition-colors hover:text-foam">
+                {l.label}
+              </Link>
+            </span>
+          ))}
+        </nav>
       </div>
     </footer>
   );

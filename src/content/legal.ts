@@ -26,7 +26,7 @@ export type LegalDoc = {
 
 
 export const terms: LegalDoc = {
-  slug: "pogoji",
+  slug: "splosni-pogoji",
   title: "Splošni pogoji poslovanja",
   description: "Splošni pogoji poslovanja za storitev izdelave spletnih strani Spletne.com.",
   updated: "25. 11. 2026",
@@ -154,7 +154,7 @@ export const terms: LegalDoc = {
 };
 
 export const privacy: LegalDoc = {
-  slug: "zasebnost",
+  slug: "politika-zasebnosti",
   title: "Politika zasebnosti",
   description: "Kako Spletne.com obdeluje in varuje osebne podatke.",
   updated: "25. 11. 2026",

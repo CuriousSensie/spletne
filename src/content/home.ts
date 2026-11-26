@@ -220,7 +220,7 @@ export const home = {
     consent: {
       before: "Z oddajo se strinjate z obdelavo vaših podatkov za odgovor na povpraševanje. ",
       link: "Politika zasebnosti",
-      href: "/zasebnost",
+      href: "/politika-zasebnosti",
     },
     okEyebrow: "Povpraševanje oddano",
     ok: { before: "Prejeli smo povpraševanje. Odgovorili bomo ", after: " predvidoma v enem dnevu." },
@@ -242,6 +242,11 @@ export const home = {
       { href: "/#top", label: "Na začetek" },
       { href: "/vec", label: "Pogosta vprašanja" },
     ],
-    copyright: "Splošni pogoji | Politika zasebnosti | Piškotki",
+    /** The legal documents; rendered as a row of links under the main footer links. */
+    legal: [
+      { href: "/splosni-pogoji", label: "Splošni pogoji" },
+      { href: "/politika-zasebnosti", label: "Politika zasebnosti" },
+      { href: "/piskotki", label: "Piškotki" },
+    ],
   },
 } as const;
