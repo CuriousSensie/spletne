@@ -8,8 +8,8 @@ import { SiteFooter } from "@/components/site/site-footer";
 import { SmoothScroll } from "@/components/site/smooth-scroll";
 
 export const metadata: Metadata = {
-  title: "Kaj dobite in pogosta vprašanja · Spletne",
-  description: "Kaj vključuje nova spletna stran, kako poteka sodelovanje in odgovori na najpogostejša vprašanja.",
+  title: "Pogosta vprašanja in kaj dobite · Spletne",
+  description: "Odgovori na najpogostejša vprašanja ter kaj vključuje nova spletna stran.",
   alternates: { canonical: "/vec" },
 };
 
@@ -18,10 +18,10 @@ export default function MorePage() {
   return (
     <main className="isolate overflow-x-clip bg-ink text-foam">
       <PageHeader id="top" />
+      <Faq />
       <section id="what-you-get" aria-labelledby="get-title" className="relative">
         <Exploded />
       </section>
-      <Faq />
       <MoreCta />
       <SiteFooter />
       <SmoothScroll />
