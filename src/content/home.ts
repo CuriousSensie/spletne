@@ -202,7 +202,8 @@ export const home = {
       details: {
         label: "Podrobnosti",
         placeholder: "Opišite svoje podjetje, kaj ponujate in kaj bi želeli doseči z novo stranjo …",
-        count: (n: number, min: number) => `${n} / ${min} besed`,
+        optional: "neobvezno",
+        count: (n: number, max: number) => `${n} / ${max}`,
       },
       files: {
         label: "Priponke",
@@ -227,8 +228,7 @@ export const home = {
       site: "Vnesite naslov spletne strani ali ime podjetja.",
       email: "Vnesite veljaven e-naslov.",
       phone: "Vnesite veljavno telefonsko številko ali pustite polje prazno.",
-      details: `Opišite projekt z vsaj 20 besedami.`,
-      detailsLong: "Opis je predolg. Skrajšajte ga na največ 5000 znakov.",
+      detailsLong: "Opis je predolg. Skrajšajte ga na največ 1000 znakov.",
       filesCount: "Največ 5 datotek.",
       filesSize: "Posamezna datoteka je lahko velika največ 5 MB.",
       filesTotal: "Priponke skupaj ne smejo presegati 10 MB.",

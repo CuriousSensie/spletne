@@ -1,7 +1,7 @@
 "use server";
 
 import { home } from "@/content/home";
-import { EMAIL_RE, MAX_DETAILS_CHARS, MIN_WORDS, checkFiles, countWords, isPhone, type FileProblem } from "@/lib/inquiry";
+import { EMAIL_RE, MAX_DETAILS_CHARS, checkFiles, isPhone, type FileProblem } from "@/lib/inquiry";
 import { mailConfig, missingMailEnv, sendMail } from "@/lib/mailer";
 
 export type InquiryField = "site" | "email" | "phone" | "details" | "files";
@@ -72,7 +72,7 @@ async function deliverLead(lead: Lead): Promise<void> {
       `Attachments: ${lead.files.length ? lead.files.map((f) => f.filename).join(", ") : "none"}`,
       "",
       "Details:",
-      lead.details,
+      lead.details || "-",
       "",
       "Reply to this email to answer the client directly.",
     ].join("\n"),
@@ -96,7 +96,6 @@ export async function requestPreview(formData: FormData): Promise<InquiryState> 
   if (!url && (name.length < 2 || name.length > 120)) return { status: "error", field: "site", message: MSG.site };
   if (!EMAIL_RE.test(email) || email.length > 254) return { status: "error", field: "email", message: MSG.email };
   if (phone && !isPhone(phone)) return { status: "error", field: "phone", message: MSG.phone };
-  if (countWords(details) < MIN_WORDS) return { status: "error", field: "details", message: MSG.details };
   if (details.length > MAX_DETAILS_CHARS) return { status: "error", field: "details", message: MSG.detailsLong };
   const problem = checkFiles(files);
   if (problem) return { status: "error", field: "files", message: FILE_MSG[problem] };

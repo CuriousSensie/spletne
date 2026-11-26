@@ -1,7 +1,7 @@
 /** Rules for the inquiry form, shared by the browser (instant feedback) and the server action (authoritative). */
 
-export const MIN_WORDS = 20;
-export const MAX_DETAILS_CHARS = 5000;
+/** Details are optional; the cap keeps requests short. */
+export const MAX_DETAILS_CHARS = 1000;
 
 export const MAX_FILES = 5;
 export const MAX_FILE_BYTES = 5 * 1024 * 1024;
@@ -15,11 +15,6 @@ export const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 const PHONE_RE = /^\+?[\d\s()/.-]{6,20}$/;
 
 export const isPhone = (v: string): boolean => PHONE_RE.test(v) && (v.match(/\d/g)?.length ?? 0) >= 6;
-
-export function countWords(text: string): number {
-  const t = text.trim();
-  return t ? t.split(/\s+/).length : 0;
-}
 
 export type FileProblem = "count" | "size" | "total" | "type";
 

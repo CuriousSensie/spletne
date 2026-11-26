@@ -3,7 +3,7 @@
 import { useId, useRef, useState, useTransition } from "react";
 import { requestPreview, type InquiryField } from "@/app/actions/request-preview";
 import { home } from "@/content/home";
-import { EMAIL_RE, FILE_ACCEPT, MIN_WORDS, checkFiles, countWords, formatBytes, isPhone, type FileProblem } from "@/lib/inquiry";
+import { EMAIL_RE, FILE_ACCEPT, MAX_DETAILS_CHARS, checkFiles, formatBytes, isPhone, type FileProblem } from "@/lib/inquiry";
 import type { InquiryPrefill } from "./inquiry-context";
 
 const t = home.inquiry;
@@ -42,7 +42,7 @@ export function InquiryForm({ prefill, onDone }: { prefill: InquiryPrefill; onDo
   const [pending, startTransition] = useTransition();
   const [files, setFiles] = useState<File[]>([]);
   const [fileError, setFileError] = useState<string | null>(null);
-  const [words, setWords] = useState(0);
+  const [chars, setChars] = useState(0);
   const [dragging, setDragging] = useState(false);
   const picker = useRef<HTMLInputElement>(null);
   const hintId = useId();
@@ -67,12 +67,10 @@ export function InquiryForm({ prefill, onDone }: { prefill: InquiryPrefill; onDo
     const fd = new FormData(e.currentTarget);
     const email = String(fd.get("email") ?? "").trim();
     const phone = String(fd.get("phone") ?? "").trim();
-    const details = String(fd.get("details") ?? "");
 
     // Instant feedback; the server repeats every check.
     if (!EMAIL_RE.test(email)) return setResult({ status: "error", field: "email", message: t.errors.email });
     if (phone && !isPhone(phone)) return setResult({ status: "error", field: "phone", message: t.errors.phone });
-    if (countWords(details) < MIN_WORDS) return setResult({ status: "error", field: "details", message: t.errors.details });
 
     for (const file of files) fd.append("files", file);
     startTransition(async () => {
@@ -114,18 +112,18 @@ export function InquiryForm({ prefill, onDone }: { prefill: InquiryPrefill; onDo
           <input name="phone" type="tel" inputMode="tel" autoComplete="tel" placeholder={f.phone.placeholder} aria-invalid={errField === "phone"} className={inputCls} />
         </Field>
       </div>
-      <Field label={f.details.label} invalid={errField === "details"}>
+      <Field label={f.details.label} optional={f.details.optional} invalid={errField === "details"}>
         <textarea
           name="details"
-          required
           rows={5}
+          maxLength={MAX_DETAILS_CHARS}
           placeholder={f.details.placeholder}
-          onChange={(e) => setWords(countWords(e.target.value))}
+          onChange={(e) => setChars(e.target.value.length)}
           aria-invalid={errField === "details"}
           className={`${inputCls} resize-y`}
         />
-        <span className={`justify-self-end font-mono text-[11px] tracking-[0.12em] tabular-nums ${words >= MIN_WORDS ? "text-[#7fe0b0]" : "text-foam/45"}`}>
-          {f.details.count(words, MIN_WORDS)}
+        <span className="justify-self-end font-mono text-[11px] tracking-[0.12em] text-foam/45 tabular-nums">
+          {f.details.count(chars, MAX_DETAILS_CHARS)}
         </span>
       </Field>
 
@@ -202,7 +200,7 @@ export function InquiryForm({ prefill, onDone }: { prefill: InquiryPrefill; onDo
       <input type="text" name="company" tabIndex={-1} autoComplete="off" aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 opacity-0" />
 
       <div className="mt-2 flex flex-col-reverse gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <p aria-live="polite" className={`text-[14px] ${result.status === "error" ? "text-[#ff8a7a]" : "font-mono text-[11px] tracking-[0.14em] text-foam/45 uppercase"}`}>
+        <p aria-live="polite" className={result.status === "error" ? "text-[14px] text-[#ff8a7a]" : "font-mono text-[11px] tracking-[0.14em] text-foam/45 uppercase"}>
           {result.status === "error" ? result.message : t.due}
         </p>
         <button
