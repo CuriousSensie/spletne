@@ -110,19 +110,6 @@ export const home = {
     extras: "Rabite več strani, nadstandardno optimizacijo SEO, trgovino, sprejemanje plačil, avtomatizacije? Pogovorimo se in našli bomo rešitve.",
   },
 
-  whatYouGet: {
-    label: "Kaj dobite",
-    title: { before: "Stran, ki odpira nove priložnosti" },
-    layers: {
-      domain: { name: "Namestitev", line: "Vaša domena, vaš prostor na spletu. Mi poskrbimo, da vse deluje." },
-      code: { name: "Koda", line: "Pregledna in urejena, da jo razume vsak razvijalec. Lastnik ste vi." },
-      structure: { name: "Struktura", line: "Jasna zgradba, da vas Google razume, najde in prikaže." },
-      design: { name: "Dizajn", line: "Sodoben, jasen, pregleden, prilagojen telefonu." },
-      words: { name: "Besedila", line: "Jasna, kratka, prepričljiva. Brez praznih fraz." },
-    },
-    states: { finished: "Bolj vidni. Bolj prepričljivi.", assembled: "Sestavljena", hint: "Razstavi jo.", closing: "Vaša nova spletna stran.", layerWord: "Plast" },
-  },
-
   faq: {
     label: "Vprašanja",
     title: { before: "Pogosta vprašanja" },
@@ -171,6 +158,19 @@ export const home = {
     ],
   },
 
+  whatYouGet: {
+    label: "Kaj dobite?",
+    title: { before: "Stran, ki odpira nove priložnosti" },
+    layers: {
+      domain: { name: "Namestitev", line: "Vaša domena, vaš prostor na spletu. Mi poskrbimo, da vse deluje." },
+      code: { name: "Koda", line: "Pregledna in urejena, da jo razume vsak razvijalec. Lastnik ste vi." },
+      structure: { name: "Struktura", line: "Jasna zgradba, da vas Google razume, najde in prikaže." },
+      design: { name: "Dizajn", line: "Sodoben, jasen, pregleden, prilagojen telefonu." },
+      words: { name: "Besedila", line: "Jasna, kratka, prepričljiva. Brez praznih fraz." },
+    },
+    states: { finished: "Bolj vidni. Bolj prepričljivi.", assembled: "Sestavljena", hint: "Razstavi jo.", closing: "Vaša nova spletna stran.", layerWord: "Plast" },
+  },
+  
   start: {
     label: "Začnimo",
     title: { before: "Pošljite podatke, da pripravimo načrt" },
@@ -184,9 +184,9 @@ export const home = {
     back: "Domov",
     cta: {
       label: "Začnimo",
-      title: { before: "Poglejmo, kako bi izgledala vaša nova stran." },
-      body: "Pošljite nam povezavo do obstoječe strani ali opišite svoje želje. Osnutek je brezplačen.",
-      button: "Pošljite povpraševanje",
+      title: { before: "Bi poskusili?" },
+      body: "Vašo novo stran vam na vpogled pošljemo že jutri.",
+      button: "Poskusimo",
     },
   },
 
@@ -239,7 +239,7 @@ export const home = {
 
   footer: {
     links: [
-      { href: "/#top", label: "Na vrh" },
+      { href: "/#top", label: "Na začetek" },
       { href: "/vec", label: "Pogosta vprašanja" },
     ],
     copyright: "Splošni pogoji | Politika zasebnosti | Piškotki",
