@@ -101,6 +101,7 @@ export function InquiryForm({ prefill, onDone }: { prefill: InquiryPrefill; onDo
 
   return (
     <form onSubmit={onSubmit} noValidate className="grid gap-3">
+      {prefill.ref && <input type="hidden" name="ref" value={prefill.ref} />}
       <Field label={f.site.label} invalid={errField === "site"}>
         <input name="site" type="text" required autoComplete="url" placeholder={f.site.placeholder} defaultValue={prefill.site ?? ""} aria-invalid={errField === "site"} className={inputCls} />
       </Field>

@@ -45,6 +45,8 @@ type Lead = {
   phone: string;
   details: string;
   files: { filename: string; content: Buffer }[];
+  /** True when sent from a preview's "next steps" block: changes, pictures and logo for an existing preview. */
+  fromPreview: boolean;
 };
 
 /** Emails the lead to LEAD_INBOX via Resend. Without mail config: logs in development, fails loudly in production. */
@@ -64,8 +66,9 @@ async function deliverLead(lead: Lead): Promise<void> {
   await sendMail({
     to: mailConfig().inbox,
     replyTo: lead.email,
-    subject: `Preview request: ${label}`,
+    subject: `${lead.fromPreview ? "Preview changes" : "Preview request"}: ${label}`,
     text: [
+      ...(lead.fromPreview ? ["From an existing preview (client reserved it and sends changes / pictures / logo).", ""] : []),
       `${lead.isUrl ? "Website" : "Business"}: ${lead.siteOrName}`,
       `Email: ${lead.email}`,
       `Phone: ${lead.phone || "-"}`,
@@ -85,6 +88,7 @@ export async function requestPreview(formData: FormData): Promise<InquiryState> 
   const email = String(formData.get("email") ?? "").trim();
   const phone = String(formData.get("phone") ?? "").trim();
   const details = String(formData.get("details") ?? "").trim();
+  const fromPreview = String(formData.get("ref") ?? "") === "preview";
   const files = formData.getAll("files").filter((f): f is File => f instanceof File && f.size > 0);
 
   // Honeypot: real visitors never see or fill this field. Pretend success so bots move on.
@@ -104,7 +108,7 @@ export async function requestPreview(formData: FormData): Promise<InquiryState> 
     const attachments = await Promise.all(
       files.map(async (f) => ({ filename: safeName(f.name), content: Buffer.from(await f.arrayBuffer()) })),
     );
-    await deliverLead({ siteOrName: url ?? name, isUrl: !!url, email, phone, details, files: attachments });
+    await deliverLead({ siteOrName: url ?? name, isUrl: !!url, email, phone, details, files: attachments, fromPreview });
   } catch (err) {
     console.error("[request-preview] delivery failed", err);
     return { status: "error", message: MSG.server };
