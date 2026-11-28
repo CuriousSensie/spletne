@@ -6,8 +6,10 @@ import { home } from "@/content/home";
 
 export type OpenPreviewState = { status: "idle" } | { status: "error"; message: string };
 
-/** Unambiguous alphabet (no 0/O, 1/I/L) so codes survive being read from an email or a phone call. */
-const CODE_RE = /^[A-HJKMNP-Z2-9]{6}$/;
+/** The code is the client's preview password: 6 letters or digits (generated ones skip look-alike characters). */
+const CODE_RE = /^[A-Z0-9]{6}$/;
+/** A one-time login ticket from the control plane (url-safe, long). */
+const TICKET_RE = /^[A-Za-z0-9_-]{20,128}$/;
 
 const MESSAGES = home.previewAccess.errors;
 const TIMEOUT_MS = 8000;
@@ -26,7 +28,8 @@ async function clientIp(): Promise<string> {
  * The admin app (CONTROL_PLANE_URL) owns the codes: it stores only keyed hashes,
  * rate-limits guesses per IP, and answers with the preview's host. Misses always
  * look the same, so a visitor can't tell "wrong code" from "expired code".
- * The preview itself is still behind its own password.
+ * The code is the preview's password; the control plane also hands back a one-time ticket, so the visitor arrives
+ * already signed in.
  */
 export async function openPreview(_prev: OpenPreviewState, formData: FormData): Promise<OpenPreviewState> {
   const code = String(formData.get("code") ?? "")
@@ -62,12 +65,15 @@ export async function openPreview(_prev: OpenPreviewState, formData: FormData): 
     return fail(MESSAGES.unavailable);
   }
 
-  const data = (await res.json()) as { found?: boolean; host?: string };
+  const data = (await res.json()) as { found?: boolean; host?: string; ticket?: string };
   const root = process.env.PREVIEW_ROOT_DOMAIN ?? "spletne.com";
   // Never redirect anywhere but a preview under our own domain, whatever the API says.
   if (!data.found || !data.host || !data.host.endsWith(`.${root}`) || !/^[a-z0-9.:-]+$/.test(data.host)) {
     return fail(MESSAGES.notFound);
   }
-  // redirect() throws by design, so it stays outside any try/catch.
-  redirect(`${process.env.PREVIEW_SCHEME ?? "https"}://${data.host}`);
+  // With a ticket the preview's gate signs the visitor in on arrival (single use, one minute); without one (an
+  // expired preview, or an older site) they land on the password form. redirect() throws by design, so it stays
+  // outside any try/catch.
+  const origin = `${process.env.PREVIEW_SCHEME ?? "https"}://${data.host}`;
+  redirect(data.ticket && TICKET_RE.test(data.ticket) ? `${origin}/gate?t=${encodeURIComponent(data.ticket)}` : origin);
 }
